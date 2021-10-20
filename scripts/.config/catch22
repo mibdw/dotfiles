@@ -1,0 +1,182 @@
+x=$((1 + $RANDOM % 60))
+if [ "$x" == "1" ]; then
+  echo -e "“He was going to live forever, or die in the attempt.”"
+  echo -e "― \e[3mJoseph Heller\e[0m, Catch 22"
+elif [ "$x" == "2" ]; then
+  echo -e "“Just because you're paranoid doesn't mean they aren't after you.”"
+  echo -e "― \e[3mJoseph Heller\e[0m, Catch 22"
+elif [ "$x" == "3" ]; then
+  echo -e "“There was only one catch and that was Catch-22, which specified that a concern for one's safety in the face of dangers that were real and immediate was the process of a rational mind. Orr was crazy and could be grounded. All he had to do was ask; and as soon as he did, he would no longer be crazy and would have to fly more missions. Orr would be crazy to fly more missions and sane if he didn't, but if he was sane he had to fly them. If he flew them he was crazy and didn't have to; but if he didn't want to he was sane and had to. Yossarian was moved very deeply by the absolute simplicity of this clause of Catch-22 and let out a respectful whistle.\n\n\"That's some catch, that Catch-22,\" he observed.\n\n\"It's the best there is,\" Doc Daneeka agreed.”"
+  echo -e "― \e[3mJoseph Heller\e[0m, Catch 22"
+elif [ "$x" == "4" ]; then
+  echo -e "“...[A]nything worth dying for ... is certainly worth living for.”"
+  echo -e "― \e[3mJoseph Heller\e[0m, Catch 22"
+elif [ "$x" == "5" ]; then
+  echo -e "“They're trying to kill me,\" Yossarian told him calmly.\nNo one's trying to kill you,\" Clevinger cried.\nThen why are they shooting at me?\" Yossarian asked.\nThey're shooting at everyone,\" Clevinger answered. \"They're trying to kill everyone.\"\nAnd what difference does that make?”"
+  echo -e "― \e[3mJoseph Heller\e[0m, Catch 22"
+elif [ "$x" == "6" ]; then
+  echo -e "“The enemy is anybody who's going to get you killed, no matter which side he is on.”"
+  echo -e "― \e[3mJoseph Heller\e[0m, Catch 22"
+elif [ "$x" == "7" ]; then
+  echo -e "“It doesn't make a damned bit of difference who wins the war to someone who's dead.”"
+  echo -e "― \e[3mJoseph Heller\e[0m, Catch 22"
+elif [ "$x" == "8" ]; then
+  echo -e "“[They] agreed that it was neither possible nor necessary to educate people who never questioned anything.”"
+  echo -e "― \e[3mJoseph Heller\e[0m, Catch 22"
+elif [ "$x" == "9" ]; then
+  echo -e "“He knew everything there was to know about literature, except how to enjoy it”"
+  echo -e "― \e[3mJoseph Heller\e[0m, Catch 22"
+elif [ "$x" == "10" ]; then
+  echo -e "“Insanity is contagious.”"
+  echo -e "― \e[3mJoseph Heller\e[0m, Catch 22"
+elif [ "$x" == "11" ]; then
+  echo -e "“It was miraculous. It was almost no trick at all, he saw, to turn vice into virtue and slander into truth, impotence into abstinence, arrogance into humility, plunder into philanthropy, thievery into honor, blasphemy into wisdom, brutality into patriotism, and sadism into justice. Anybody could do it; it required no brains at all. It merely required no character.”"
+  echo -e "― \e[3mJoseph Heller\e[0m, Catch 22"
+elif [ "$x" == "12" ]; then
+  echo -e "“What is a country? A country is a piece of land surrounded on all sides by boundaries, usually unnatural. Englishmen are dying for England, Americans are dying for America, Germans are dying for Germany, Russians are dying for Russia. There are now fifty or sixty countries fighting in this war. Surely so many countries can't all be worth dying for.”"
+  echo -e "― \e[3mJoseph Heller\e[0m, Catch 22"
+elif [ "$x" == "13" ]; then
+  echo -e "“What a lousy earth! He wondered how many people were destitute that same night even in his own prosperous country, how many homes were shanties, how many husbands were drunk and wives socked, and how many children were bullied, abused, or abandoned. How many families hungered for food they could not afford to buy? How many hearts were broken? How many suicides would take place that same night, how many people would go insane? How many cockroaches and landlords would triumph? How many winners were losers, successes failures, and rich men poor men? How many wise guys were stupid? How many happy endings were unhappy endings? How many honest men were liars, brave men cowards, loyal men traitors, how many sainted men were corrupt, how many people in positions of trust had sold their souls to bodyguards, how many had never had souls? How many straight-and-narrow paths were crooked paths? How many best families were worst families and how many good people were bad people? When you added them all up and then subtracted, you might be left with only the children, and perhaps with Albert Einstein and an old violinist or sculptor somewhere.”"
+  echo -e "― \e[3mJoseph Heller\e[0m, Catch 22"
+elif [ "$x" == "14" ]; then
+  echo -e "“Why are they going to disappear him?'\nI don't know.'\nIt doesn't make sense. It isn't even good grammar.”"
+  echo -e "― \e[3mJoseph Heller\e[0m, Catch 22"
+elif [ "$x" == "15" ]; then
+  echo -e "“The country was in peril; he was jeopardizing his traditional rights of freedom and independence by daring to exercise them.”"
+  echo -e "― \e[3mJoseph Heller\e[0m, Catch 22"
+elif [ "$x" == "16" ]; then
+  echo -e "“Man was matter, that was Snowden's secret. Drop him out a window, and he'll fall. Set fire to him and he'll burn. Bury him and he'll rot, like other kinds of garbage. The spirit gone, man is garbage. That was Snowden's secret. Ripeness was all.”"
+  echo -e "― \e[3mJoseph Heller\e[0m, Catch 22"
+elif [ "$x" == "17" ]; then
+  echo -e "“The Texan turned out to be good-natured, generous and likable. In three days no one could stand him.”"
+  echo -e "― \e[3mJoseph Heller\e[0m, Catch 22"
+elif [ "$x" == "18" ]; then
+  echo -e "“You have a morbid aversion to dying. You probably resent the fact that you're at war and might get your head blown off any second.\"\n\n\"I more than resent it, sir. I'm absolutely incensed.\"\n\n\"You have deep-seated survival anxieties. And you don't like bigots, bullies, snobs, or hypocrites. Subconsciously there are many people you hate.\"\n\n\"Consciously, sir, consciously,\" Yossarian corrected in an effort to help. \"I hate them consciously.\"\n\n\"You're antagonistic to the idea of being robbed, exploited, degraded, humiliated, or deceived. Misery depresses you. Ignorance depresses you. Persecution depresses you. Violence depresses you. Corruption depresses you. You know, it wouldn't surprise me if you're a manic-depressive!\"\n\n\"Yes, sir. Perhaps I am.\"\n\n\"Don't try to deny it.\"\n\n\"I'm not denying it, sir,\" said Yossarian, pleased with the miraculous rapport that finally existed between them. \"I agree with all you've said.”"
+  echo -e "― \e[3mJoseph Heller\e[0m, Catch 22"
+elif [ "$x" == "19" ]; then
+  echo -e "“Some men are born mediocre, some men achieve mediocrity, and some men have mediocrity thrust upon them. With Major Major it had been all three. Even among men lacking all distinction he inevitably stood out as a man lacking more distinction than all the rest, and people who met him were always impressed by how unimpressive he was.”"
+  echo -e "― \e[3mJoseph Heller\e[0m, Catch 22"
+elif [ "$x" == "20" ]; then
+  echo -e "“Be glad you're even alive.'\nBe furious you're going to die.”"
+  echo -e "― \e[3mJoseph Heller\e[0m, Catch 22"
+elif [ "$x" == "21" ]; then
+  echo -e "“From now on I'm thinking only of me.\"\n\nMajor Danby replied indulgently with a superior smile: \"But, Yossarian, suppose everyone felt that way.\"\n\n\"Then,\" said Yossarian, \"I'd certainly be a damned fool to feel any other way, wouldn't I?”"
+  echo -e "― \e[3mJoseph Heller\e[0m, Catch 22"
+elif [ "$x" == "22" ]; then
+  echo -e "“Do you know how long a year takes when it's going away?' Dunbar repeated to Clevinger. 'This long.' He snapped his fingers. 'A second ago you were stepping into college with your lungs full of fresh air. Today you're an old man.'\n\n'Old?' asked Clevinger with surprise. 'What are you talking about?'\n\n'Old.'\n\n'I'm not old.'\n\n'You're inches away from death every time you go on a mission. How much older can you be at your age? A half minute before that you were stepping into high school, and an unhooked brassiere was as close as you ever hoped to get to Paradise. Only a fifth of a second before that you were a small kid with a ten-week summer vacation that lasted a hundred thousand years and still ended too soon. Zip! They go rocketing by so fast. How the hell else are you ever going to slow down?' Dunbar was almost angry when he finished.\n\n'Well, maybe it is true,' Clevinger conceded unwillingly in a subdued tone. 'Maybe a long life does have to be filled with many unpleasant conditions if it's to seem long. But in that event, who wants one?'\n\n'I do,' Dunbar told him.\n\n'Why?' Clevinger asked.\n\n'What else is there?”"
+  echo -e "― \e[3mJoseph Heller\e[0m, Catch 22"
+elif [ "$x" == "23" ]; then
+  echo -e "“When I look up, I see people cashing in. I don't see heaven or saints or angels. I see people cashing in on every decent impulse and every human tragedy.”"
+  echo -e "― \e[3mJoseph Heller\e[0m, Catch 22"
+elif [ "$x" == "24" ]; then
+  echo -e "“He was a self-made man who owed his lack of success to nobody.”"
+  echo -e "― \e[3mJoseph Heller\e[0m, Catch 22"
+elif [ "$x" == "25" ]; then
+  echo -e "“There's nothing mysterious about it, He's not working at all. He's playing. Or else He's forgotten all about us. That's the kind of God you people talk about, a country bumpkin, a clumsy, bungling, brainless, conceited, uncouth hayseed. Good God, how much reverence can you have for a Supreme Being who finds it necessary to include such phenomena as phlegm and tooth decay in His divine system of Creation? What in the world was running through that warped, evil, scatological mind of His when He robbed old people of the power to control their bowel movements? Why in the world did He ever create pain?”"
+  echo -e "― \e[3mJoseph Heller\e[0m, Catch 22"
+elif [ "$x" == "26" ]; then
+  echo -e "“Well, he died. You don't get any older than that.”"
+  echo -e "― \e[3mJoseph Heller\e[0m, Catch 22"
+elif [ "$x" == "27" ]; then
+  echo -e "“What do you do when it rains?\"\nThe captain answered frankly. \"I get wet.”"
+  echo -e "― \e[3mJoseph Heller\e[0m, Catch 22"
+elif [ "$x" == "28" ]; then
+  echo -e "“You know, that might be the answer – to act boastfully about something we ought to be ashamed of. That’s a trick that never seems to fail.”"
+  echo -e "― \e[3mJoseph Heller\e[0m, Catch 22"
+elif [ "$x" == "29" ]; then
+  echo -e "“Where were you born?\"\n\"On a battlefield,\" [Yossarian] answered.\n\"No, no. In what state were you born?\"\n\"In a state of innocence.”"
+  echo -e "― \e[3mJoseph Heller\e[0m, Catch 22"
+elif [ "$x" == "30" ]; then
+  echo -e "“You have deep-seated survival anxieties. And you don't like bigots, bullies, snobs or hypocrites. Subconsciously there are many people you hate.\"\n\n\"Consciously, sir, consciously,\" Yossarian corrected in an effort to help. \"I hate them consciously.”"
+  echo -e "― \e[3mJoseph Heller\e[0m, Catch 22"
+elif [ "$x" == "31" ]; then
+  echo -e "“Morale was deteriorating and it was all Yossarian's fault. The country was in peril; he was jeopardizing his traditional rights of freedom and independence by daring to exercise them.”"
+  echo -e "― \e[3mJoseph Heller\e[0m, Catch 22"
+elif [ "$x" == "32" ]; then
+  echo -e "“He was never without misery, and never without hope.”"
+  echo -e "― \e[3mJoseph Heller\e[0m, Catch 22"
+elif [ "$x" == "33" ]; then
+  echo -e "“There was no telling what people might find out once they felt free to ask whatever questions they wanted to.”"
+  echo -e "― \e[3mJoseph Heller\e[0m, Catch 22"
+elif [ "$x" == "34" ]; then
+  echo -e "“He had decided to live forever or die in the attempt.”"
+  echo -e "― \e[3mJoseph Heller\e[0m, Catch 22"
+elif [ "$x" == "35" ]; then
+  echo -e "“Surely there can't be so many countries worth dying for.'\nAnything worth living for,' said Nately, 'is worth dying for.'\nAnd anything worth dying for,' answered the sacrilegious old man, 'is certainly worth living for.”"
+  echo -e "― \e[3mJoseph Heller\e[0m, Catch 22"
+elif [ "$x" == "36" ]; then
+  echo -e "“Prostitution gives her an opportunity to meet people. It provides fresh air and wholesome exercise, and it keeps her out of trouble.”"
+  echo -e "― \e[3mJoseph Heller\e[0m, Catch 22"
+elif [ "$x" == "37" ]; then
+  echo -e "“Let's take a drive into the middle of nowhere with a packet of Marlboro lights and talk about our lives.”"
+  echo -e "― \e[3mJoseph Heller\e[0m, Catch 22"
+elif [ "$x" == "38" ]; then
+  echo -e "“Who's they?\" He wanted to know. \"Who, specifically, do you think is trying to murder you?\"\n\"Every one of them,\" Yossarian told him.\n\"Every one of whom?\"\n\"Every one of whom do you think?\"\n\"I haven't any idea.\"\n\"Then how do you know they aren't?\"\n\"Because...\" Clevinger sputtered, and turned speechless with frustration.\nClevinger really thought he was right, but Yossarian had proof, because strangers he didn't know shot at him with cannons every time he flew up into the air to drop bombs on them, and it wasn't funny at all.”"
+  echo -e "― \e[3mJoseph Heller\e[0m, Catch 22"
+elif [ "$x" == "39" ]; then
+  echo -e "“Sure, that's what I mean,' Doc Daneeka said. 'A little grease is what makes this world go round. One hand washes the other. Know what I mean? You scratch my back, I'll scratch yours.'\n\nYossarian knew what he meant.\n\nThat's not what I meant,' Doc Daneeka said, as Yossarian began scratching his back.”"
+  echo -e "― \e[3mJoseph Heller\e[0m, Catch 22"
+elif [ "$x" == "40" ]; then
+  echo -e "“Catch-22 did not exist, he was positive of that, but it made no difference. What did matter was that everyone thought it existed, and that was much worse, for there was no object or text to ridicule or refute, to accuse, criticize, attack, amend, hate, revile, spit at, rip to shreds, trample upon or burn up.”"
+  echo -e "― \e[3mJoseph Heller\e[0m, Catch 22"
+elif [ "$x" == "41" ]; then
+  echo -e "“-You have no respect for excessive authority or obsolete traditions. You're dangerous and depraved, and you ought to be taken outside and shot!”"
+  echo -e "― \e[3mJoseph Heller\e[0m, Catch 22"
+elif [ "$x" == "42" ]; then
+  echo -e "“What would they do to me,\" he asked in confidential tones, \"if I refused to fly them?\"\nWe'd probably shoot you,\" ex-P.F.C. Wintergreen replied.\nWe?\" Yossarian cried in surprise. \"What do you mean, we? Since when are you on their side?\"\nIf you're going to be shot, whose side do you expect me to be on?\" ex-P.F.C. Wintergreen retorted”"
+  echo -e "― \e[3mJoseph Heller\e[0m, Catch 22"
+elif [ "$x" == "43" ]; then
+  echo -e "“To Yossarian, the idea of pennants as prizes was absurd. No money went with them, no class privileges. Like Olympic medals and tennis trophies, all they signified was that the owner had done something of no benefit to anyone more capably than everyone else.”"
+  echo -e "― \e[3mJoseph Heller\e[0m, Catch 22"
+elif [ "$x" == "44" ]; then
+  echo -e "“Major Major had been born too late and too mediocre. Some men are born mediocre, some men achieve mediocrity, and some men have mediocrity thrust upon them. With Major Major it had been all three. Even among men lacking all distinction he inevitably stood out as a man lacking more distinction than all the rest, and people who met him were always impressed by how unimpressive he was.”"
+  echo -e "― \e[3mJoseph Heller\e[0m, Catch 22"
+elif [ "$x" == "45" ]; then
+  echo -e "“Men,\" he began his address to the officers, measuring his pauses carefully. \"You're American officers. The officers of no other army in the world can make that statement. Think about it.”"
+  echo -e "― \e[3mJoseph Heller\e[0m, Catch 22"
+elif [ "$x" == "46" ]; then
+  echo -e "“I’m not running away from my responsibilities. I’m running to them. There’s nothing negative about running away to save my life.”"
+  echo -e "― \e[3mJoseph Heller\e[0m, Catch 22"
+elif [ "$x" == "47" ]; then
+  echo -e "“She was the epitome of stately sorrow each time she smiled. ”"
+  echo -e "― \e[3mJoseph Heller\e[0m, Catch 22"
+elif [ "$x" == "48" ]; then
+  echo -e "“History did not demand Yossarian's premature demise, justice could be satisfied without it, progress did not hinge upon it, victory did not depend on it. That men would die was a matter of necessity; WHICH men would die, though, was a matter of circumstance, and Yossarian was willing to be the victim of anything but circumstance. But that was war. Just about all he could find in its favor was that it paid well and liberated children from the pernicious influence of their parents.”"
+  echo -e "― \e[3mJoseph Heller\e[0m, Catch 22"
+elif [ "$x" == "49" ]; then
+  echo -e "“Whatever his elders told him to do, he did. They told him to look before he leaped, and he always looked before he leaped. They told him never to put off until the next day what he could do the day before, and he never did. He was told to honor his father and his mother, and he honored his father and his mother. He was told that he should not kill, and he did not kill, until he got into the Army. Then he was told to kill, and he killed. He turned the other cheek on every occasion and always did unto others exactly as he would have had others do unto him. When he gave to charity, his left hand never knew what his right hand was doing. He never once took the name of the Lord his God in vain, committed adultery or coveted his neighbor's ass. In fact, he loved his neighbor and never even bore false witness against him. Major Major's elders disliked him because he was such a flagrant nonconformist.”"
+  echo -e "― \e[3mJoseph Heller\e[0m, Catch 22"
+elif [ "$x" == "50" ]; then
+  echo -e "“Clevinger had a mind, and Lieutenant Scheisskoph had noticed that people with minds tended to get pretty smart at times.”"
+  echo -e "― \e[3mJoseph Heller\e[0m, Catch 22"
+elif [ "$x" == "51" ]; then
+  echo -e "“When I was a kid,\" Orr replied, \"I used to walk around all day with crab apples in my cheeks. One in each cheek.\"\n\n... A minute passed. \"Why?\" [Yossarian] found himself forced to ask finally.\n\nOrr tittered triumphantly. \"Because they're better than horse chestnuts... When I couldn't get crab apples,\" Orr continued, \"I used horse chestnuts. Horse chestnuts are about the same size as crab apples and actually have a better shape, although the shape doesn't matter a bit.\"\n\n\"Why did you walk around with crab apples in your cheeks?\" Yossarian asked again. \"That's what I asked.\"\n\n\"Because they've got a better shape than horse chestnuts,\" Orr answered. \"I just told you that.\"\n\n\"Why,\" swore Yossarian at him approvingly, \"you evil-eyed, mechanically aptituded, disaffiliated son of a bitch, did you walk around with anything in your cheeks?\"\n\n\"I didn't,\" Orr said, \"walk around with anything in my cheeks. I walked around with crab applies in my cheeks. When I couldn't get crab apples I walked around with horse chestnuts. In my cheeks.”"
+  echo -e "― \e[3mJoseph Heller\e[0m, Catch 22"
+elif [ "$x" == "52" ]; then
+  echo -e "“Nately was instantly up in arms again. \"There is nothing so absurd about risking your life for your country!\" he declared.\n\n\"Isn't there?\" asked the old man. \"What is a country? A country is a piece of land surrounded on all sides by boundaries, usually unnatural. Englishmen are dying for England, Americans are dying for America, Germans are dying for Germany, Russians are dying for Russia. There are now fifty or sixty countries fighting in this war. Surely so many countries can't all be worth dying for.\"\n\n\"Anything worth living for,\" said Nately, \"is worth dying for.\"\n\n\"And anything worth dying for,\" answered the sacrilegious old man, \"is certainly worth living for.”"
+  echo -e "― \e[3mJoseph Heller\e[0m, Catch 22"
+elif [ "$x" == "53" ]; then
+  echo -e "“When people disagreed with him he urged them to be objective.”"
+  echo -e "― \e[3mJoseph Heller\e[0m, Catch 22"
+elif [ "$x" == "54" ]; then
+  echo -e "“Actually there were many officers' clubs that Yossarian had not helped build, but he was proudest of the one on Pianosa. It was a sturdy and complex monument to his powers of determination. Yossarian never went there to help until it was finished; then he went there often, so pleased was he with the large , fine, rambling shingled building. It was a truly splendid building, and Yossarian throbbed with a mighty sense of accomplishment each time he gazed at it and reflected that none of the work that had gone into it was his.”"
+  echo -e "― \e[3mJoseph Heller\e[0m, Catch 22"
+elif [ "$x" == "55" ]; then
+  echo -e "“So many things were testing his faith. There was the Bible, of course, but the Bible was a book, and so were Bleak House, Treasure Island, Ethan Frome and The Last of the Mohicans. Did it then seem probable, as he had once overheard Dunbar ask, that the answers to riddles of creation would be supplied by people too ignorant to understand the mechanics of rainfall? Had Almighty God, in all His infinite wisdom, really been afraid that men six thousand years ago would succeed in building a tower to heaven?”"
+  echo -e "― \e[3mJoseph Heller\e[0m, Catch 22"
+elif [ "$x" == "56" ]; then
+  echo -e "“I am miracle ingredient Z-247. I'm immense. I'm a real, slam-bang, honest-to-goodness, three-fisted humdinger. I'm a bona fide supraman.”"
+  echo -e "― \e[3mJoseph Heller\e[0m, Catch 22"
+elif [ "$x" == "57" ]; then
+  echo -e "“Some men are born mediocre, some men achieve mediocrity, and some men have mediocrity trust upon them.”"
+  echo -e "― \e[3mJoseph Heller\e[0m, Catch 22"
+elif [ "$x" == "58" ]; then
+  echo -e "“I used to get a big kick out of saving people’s lives. Now I wonder what the hell’s the point, since they all have to die anyway.”\n“Oh, there’s a point, all right,” Dunbar assured him.\n“Is there? What’s the point?”\n“The point is to keep them from dying as long as you can.”\n“Yeah, but what’s the point, since they all have to die anyway?”\n“The trick is not to think about that.”\n“Never mind the trick. What the hell’s the point?”\nDunbar pondered in silence for a few moments. “Who the hell knows.”"
+  echo -e "― \e[3mJoseph Heller\e[0m, Catch 22"
+elif [ "$x" == "59" ]; then
+  echo -e "“His heart cracked, and he fell in love. He wondered if she would marry him.\n\n“Tu sei pazzo,” she told him with a pleasant laugh.\n\n“Why am I crazy?” he asked.\n\n“Perché non posso sposare.”\n\n“Why can’t you get married?”\n\n“Because I am not a virgin,” she answered.\n\n“What has that got to do with it?”\n\n“Who will marry me? No one wants a girl who is not a virgin.”\n\n“I will. I’ll marry you.”\n\n“Ma non posso sposarti.”\n\n“Why can’t you marry me?”\n\n“Perché sei pazzo.”\n\n“Why am I crazy?”\n\n“Perché vuoi sposarmi.”\n\nYossarian wrinkled his forehead with quizzical amusement. “You won’t marry me because I’m crazy, and you say I’m crazy because I want to marry you? Is that right?”\n\n“Si.”\n\n“Tu sei pazz’!” he told her loudly.\n\n“Perché?” she shouted back at him indignantly, her unavoidable round breasts rising and falling in a saucy huff beneath the pink chemise as she sat up in bed indignantly. “Why am I crazy?”\n\n“Because you won’t marry me.”\n\n“Stupido!” she shouted back at him, and smacked him loudly and flamboyantly on the chest with the back of her hand. “Non posso sposarti! Non capisci? Non posso sposarti.”\n\n“Oh, sure, I understand. And why can’t you marry me?”\n\n“Perché sei pazzo!”\n\n“And why am I crazy?”\n\n“Perché vuoi sposarmi.”\n\n“Because I want to marry you. Carina, ti amo,” he explained, and he drew her gently back down to the pillow. “Ti amo molto.”\n\n“Tu sei pazzo,” she murmured in reply, flattered.\n\n“Perché?”\n\n“Because you say you love me. How can you love a girl who is not a virgin?”\n\n“Because I can’t marry you.”\n\nShe bolted right up again in a threatening rage. “Why can’t you marry me?” she demanded, ready to clout him again if he gave an uncomplimentary reply. “Just because I am not a virgin?”\n\n“No, no, darling. Because you’re crazy.”"
+  echo -e "― \e[3mJoseph Heller\e[0m, Catch 22"
+else
+  echo -e "“Good God, how much reverence can you have for a Supreme Being who finds it necessary to include tooth decay in His divine system of creation? Why in the world did He ever create pain?'\n'Pain?' Lieutenant Shiesskopf's wife pounced upon the word victoriously. 'Pain is a warning to us of bodily dangers.'\n'And who created the dangers?' Yossarian demanded. 'Why couldn't He have used a doorbell to notify us, or one of His celestial choirs? Or a system of blue-and-red neon tubes right in the middle of each person's forehead?'\n'People would certainly look silly walking around with red neon tubes right in the middle of their foreheads.'\n'They certainly look beautiful now writhing in agony, don't they?”"
+  echo -e "― \e[3mJoseph Heller\e[0m, Catch 22"
+fi

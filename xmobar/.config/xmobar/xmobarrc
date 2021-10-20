@@ -1,0 +1,55 @@
+Config { font    = "xft:IBM Plex Mono:pixelsize=14:antialias=true:hinting=true"
+       , additionalFonts = [ "xft:Mononoki Nerd Font:pixelsize=12:antialias=true:hinting=true"
+                           , "xft:Font Awesome 5 Free Solid:pixelsize=12"
+                           , "xft:Font Awesome 5 Brands:pixelsize=12"
+                           ]
+       , bgColor = "#111"
+       , fgColor = "#ff6c6b"
+       , alpha = 180
+       , position = TopP 0 0
+       , lowerOnStart = True
+       , hideOnStart = False
+       , allDesktops = True
+       , persistent = True
+       , iconRoot = "/home/mibdw/.xmonad/xpm/"  -- default: "."
+       , commands = [
+            Run Date "<fn=2>\xf017</fn> %a %d/%m/%Y %H:%M " "date" 50
+          , Run Battery        [ "--template" , "<fn=1>\xf0e7</fn> <acstatus>"
+                   , "--Low"      , "10"        -- units: %
+                   , "--High"     , "80"        -- units: %
+                   , "--low"      , "#999999"
+                   , "--normal"   , "#999999"
+                   , "--high"     , "#999999"
+
+                   , "--" -- battery specific options
+                             -- discharging status
+                             , "-o" , "<left>% (<timeleft>)"
+                             -- AC "on" status
+                             , "-O" , "Charging"
+                             -- charged status
+                             , "-i" , "Charged"
+                   ] 50
+          , Run Brightness [ "-t", "<fn=1>\xf0a3</fn> <percent>%", "--", "-D", "intel_backlight" ] 10
+          , Run Volume "default" "Master" [ 
+              "-t", "<status>", "--"
+              , "--on", "<fn=1>\xf028</fn> <volume>%"
+              , "--onc", "#999999"
+              , "--off", "<fn=1>\xf026</fn> MUTE"
+              , "--offc", "#999999"
+              ] 10
+          , Run Wireless "wlp0s20f3" [ "-t", "<fn=2>\xf1eb</fn> <essid>" ] 10  
+          , Run DynNetwork     [ "--template" , "<dev>: <tx>kB/s|<rx>kB/s"
+                             , "--Low"      , "1000"       -- units: kB/s
+                             , "--High"     , "5000"       -- units: kB/s
+                             , "--low"      , "darkgreen"
+                             , "--normal"   , "darkorange"
+                             , "--high"     , "darkred"
+                             ] 10
+          , Run Com "/home/mibdw/.config/pacupdate" [] "pacupdate" 36000
+          , Run Com "uname" ["-r"] "" 3600
+          , Run UnsafeStdinReader
+          ]
+       , sepChar = "%"
+       , alignSep = "}{"
+       , template = "%UnsafeStdinReader% }{  <fc=#999999>%battery% | %bright% | <action=`pavucontrol`>%default:Master%</action> | %wlp0s20f3wi% | %date% </fc>"
+       }
