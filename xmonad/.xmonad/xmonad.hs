@@ -70,13 +70,13 @@ import XMonad.Util.SpawnOnce
 
 
 myFont :: String
-myFont = "xft:Source Code Pro:regular:size=9:antialias=true:hinting=true"
+myFont = "xft:IBM Plex Mono:regular:size=9:antialias=true:hinting=true"
 
 myModMask :: KeyMask
 myModMask = mod4Mask        -- Sets modkey to super/windows key
 
 myTerminal :: String
-myTerminal = "alacritty"    -- Sets default terminal
+myTerminal = "kitty"    -- Sets default terminal
 
 myBrowser :: String
 myBrowser = "firefox "  -- Sets qutebrowser as browser
@@ -86,7 +86,7 @@ myEditor :: String
 myEditor = myTerminal ++ " -e vim -u ~/.vimrc "    -- Sets vim as editor
 
 myBorderWidth :: Dimension
-myBorderWidth = 3           -- Sets border width for windows
+myBorderWidth = 1           -- Sets border width for windows
 
 myNormColor :: String
 myNormColor   = "#22222"   -- Border color of normal windows
@@ -104,9 +104,9 @@ myStartupHook = do
     spawnOnce "nm-applet &"
     spawnOnce "blueman-applet &"
     spawnOnce "unclutter &"
-    spawnOn "term" "alacritty"
-    spawnOn "dev" "alacritty"
-    spawnNOnOnce 1 "www" "firefox"
+    spawnOn "term" myTerminal
+    spawnOn "dev" myTerminal
+    spawnNOnOnce 1 "www" myBrowser
     spawnNOnOnce 1 "sys" "keepassxc"
 
 myColorizer :: Window -> Bool -> X (String, String)

@@ -1,9 +1,8 @@
 set fish_greeting
 
-starship init fish | source
-
 export TERM="xterm-256color" 
 export EDITOR="vim"
+export LC_ALL="en_US.UTF-8"
 
 alias l='exa -1a'
 alias ll='exa -l'
