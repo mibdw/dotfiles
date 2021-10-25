@@ -17,7 +17,6 @@ alias lu='lt -u'
 alias sl='ls'
 
 alias lynx='lynx -lss=~/.config/lynx/lynx.lss -cfg=~/.config/lynx/lynx.cfg'
-
 alias xba='xbacklight -set'
 
 function ddg
@@ -29,3 +28,5 @@ function ggl
   set searchTerm (string escape --style=url $argv)
   lynx -lss=~/.config/lynx/lynx.lss -cfg=~/.config/lynx/lynx.cfg 'https://google.com/search?q='(echo $searchTerm)
 end
+
+source ~/.bash_aliases
