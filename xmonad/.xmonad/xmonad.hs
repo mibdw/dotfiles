@@ -443,8 +443,7 @@ main = do
               { ppOutput = \x -> hPutStrLn xmproc0 x                          -- xmobar on monitor 1
                               >> hPutStrLn xmproc1 x                          -- xmobar on monitor 2
                               -- >> hPutStrLn xmproc2 x                          -- xmobar on monitor 3
-              , ppCurrent = xmobarColor "#98be65" "" . wrap "[" "]"           -- Current workspace
-              , ppVisible = xmobarColor "#98be65" "" . clickable              -- Visible but not current workspace
+              , ppCurrent = xmobarColor "#98be65" "" . wrap "[" "]"           -- Current workspace , ppVisible = xmobarColor "#98be65" "" . clickable              -- Visible but not current workspace
               , ppHidden = xmobarColor "#82AAFF" "" . wrap "*" "" . clickable -- Hidden workspaces
               , ppHiddenNoWindows = xmobarColor "#c792ea" ""  . clickable     -- Hidden workspaces (no windows)
               , ppTitle = xmobarColor "#b3afc2" "" . shorten 60               -- Title of active window

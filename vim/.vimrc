@@ -32,6 +32,9 @@ set signcolumn=number
 set shortmess+=c
 set foldcolumn=1
 set clipboard=unnamed
+set list
+set showbreak=↪\
+set listchars=tab:→\ ,eol:↲,nbsp:␣,trail:•,extends:⟩,precedes:⟨
 
 if exists('+termguicolors')
   let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
@@ -47,7 +50,9 @@ call plug#begin('~/.vim/plugged')
 Plug 'tpope/vim-obsession'
 Plug 'mhinz/vim-signify'
 Plug 'junegunn/fzf.vim'
+Plug 'vim-airline/vim-airline'
 
+Plug 'machakann/vim-highlightedyank'
 Plug 'sheerun/vim-polyglot'
 Plug 'neoclide/coc.nvim', { 'branch': 'release' }
 
@@ -65,14 +70,12 @@ let &t_EI = "\<esc>[2 q"
 
 "Space leader key 
 let g:mapleader = "\<Space>"
-let g:maplocalleader = ','
 
 nnoremap <silent> <leader>q :wqa!<CR>
 
 "Easy ESC
 inoremap jk <Esc>
 inoremap kj <Esc>
-inoremap jj <Esc>
 
 "Buffer switching
 nnoremap <TAB> :bnext<CR>
@@ -80,8 +83,6 @@ nnoremap <S-TAB> :bprevious<CR>
 
 "Window navigation
 nnoremap <C-h> <C-w>h
-nnoremap <C-j> <C-w>j
-nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 
 "Indent lines
@@ -90,6 +91,7 @@ vnoremap > >gv
 
 "NERD Commenter
 nnoremap <silent> <leader>cc :NERDCommenterToggle<CR>
+nnoremap <silent> <leader>cu :NERDCommenterUncomment<CR>
 
 "Netrw
 let g:netrw_banner = 0
@@ -97,13 +99,16 @@ let g:netrw_liststyle = 3
 let g:netrw_browse_split = 4
 let g:netrw_altv = 1
 let g:netrw_winsize = 25
-
 nnoremap <silent> <leader>e :Vexplore<CR>
 
 "FZF
 nnoremap <silent> <leader>ff :Files<CR>
 nnoremap <silent> <leader>fg :GFiles<CR>
 nnoremap <silent> <leader>fb :Buffers<CR>
+nnoremap <silent> <leader>fr :Rg<CR>
+
+"Airline
+let g:airline#extensions#tabline#enabled = 1
 
 "COC
 command! -nargs=0 Prettier :CocCommand prettier.formatFile
@@ -173,3 +178,5 @@ let g:sonokai_diagnostic_text_highlight = 1
 let g:sonokai_transparent_background = 1
 let g:sonokai_enable_italic = 1
 colorscheme sonokai
+
+hi HighlightedyankRegion cterm=reverse gui=reverse
