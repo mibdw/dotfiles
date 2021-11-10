@@ -1,4 +1,7 @@
-set fish_greeting
+function fish_greeting
+    neofetch
+end
+funcsave fish_greeting
 
 export TERM="xterm-256color" 
 export EDITOR="vim"

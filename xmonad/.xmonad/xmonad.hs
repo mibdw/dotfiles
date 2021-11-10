@@ -374,7 +374,7 @@ myKeys =
         -- , ("M-<F1>", spawn "sxiv -r -q -t -o ~/wallpapers/*")
         -- , ("M-<F2>", spawn "/bin/ls ~/wallpapers | shuf -n 1 | xargs xwallpaper --stretch")
         -- , ("M-<F2>", spawn "feh --randomize --bg-fill ~/wallpapers/*")
-        , ("M-S-d", spawn "nitrogen --set-zoom-fill --random")
+        , ("M-S-d", spawn "nitrogen --force-setter=xinerama --head=0 --set-zoom-fill --random && nitrogen --force-setter=xinerama --head=1 --set-zoom-fill --random &")
         , ("M-S-,", spawn "xbacklight -dec 3")
         , ("M-S-.", spawn "xbacklight -inc 3")
         , ("M-c", spawn "pactl -- set-sink-volume 0 -2%")

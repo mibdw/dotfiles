@@ -28,7 +28,7 @@ set completeopt=longest,menu
 set hlsearch
 set incsearch
 set wildmenu
-set signcolumn=number
+"set signcolumn=number
 set shortmess+=c
 set foldcolumn=1
 set clipboard=unnamed
@@ -99,6 +99,7 @@ let g:netrw_liststyle = 3
 let g:netrw_browse_split = 4
 let g:netrw_altv = 1
 let g:netrw_winsize = 25
+let g:netrw_fastbrowse = 0
 nnoremap <silent> <leader>e :Vexplore<CR>
 
 "FZF
@@ -120,6 +121,8 @@ let g:coc_global_extensions = [
   \ 'coc-eslint', 
   \ 'coc-prettier', 
   \ 'coc-json', 
+  \ 'coc-emmet', 
+  \ 'coc-go', 
   \ ]
 
 inoremap <silent><expr> <TAB>
