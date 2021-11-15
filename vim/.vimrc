@@ -51,6 +51,7 @@ Plug 'tpope/vim-obsession'
 Plug 'mhinz/vim-signify'
 Plug 'junegunn/fzf.vim'
 Plug 'vim-airline/vim-airline'
+Plug 'preservim/nerdtree'
 
 Plug 'machakann/vim-highlightedyank'
 Plug 'sheerun/vim-polyglot'
@@ -100,7 +101,7 @@ let g:netrw_browse_split = 4
 let g:netrw_altv = 1
 let g:netrw_winsize = 25
 let g:netrw_fastbrowse = 0
-nnoremap <silent> <leader>e :Vexplore<CR>
+nnoremap <silent> <leader>e :NERDTreeFind<CR>
 
 "FZF
 nnoremap <silent> <leader>ff :Files<CR>
