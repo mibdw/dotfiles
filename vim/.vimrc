@@ -72,7 +72,12 @@ let &t_EI = "\<esc>[2 q"
 "Space leader key 
 let g:mapleader = "\<Space>"
 
+"Quit and save everything quickly
 nnoremap <silent> <leader>q :wqa!<CR>
+
+"Disable Ex mode
+map q: <Nop>
+nnoremap Q <nop>
 
 "Easy ESC
 inoremap jk <Esc>
