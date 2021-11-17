@@ -1,23 +1,10 @@
-function fish_greeting
-    neofetch
-end
-funcsave fish_greeting
-
 export TERM="xterm-256color" 
 export EDITOR="vim"
 export LC_ALL="en_US.UTF-8"
 
 alias l='exa -1a'
-alias ll='exa -l'
-alias lr='ll -R'
-alias la='ll -a'
-alias lm='la | "$PAGER"'
-alias lx='ll --sort=Extension'
-alias lk='ll --sort=size -r'
-alias lt='ll --sort=modified -r'
-alias lc='lt -m'
-alias lu='lt -u'
-alias sl='ls'
+alias la='exa -la'
+alias tmux='tmux -u'
 
 alias lynx='lynx -lss=~/.config/lynx/lynx.lss -cfg=~/.config/lynx/lynx.cfg'
 alias xba='xbacklight -set'
