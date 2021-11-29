@@ -1,0 +1,6 @@
+#!/bin/sh
+picom &
+~/.config/wallpaper-rotation &
+nm-applet &
+blueman-applet &
+unclutter &
