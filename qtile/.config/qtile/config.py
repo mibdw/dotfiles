@@ -38,7 +38,7 @@ keys = [
         desc="Shrink master window"
     ),
     Key([mod], "BackSpace", 
-        lazy.layout.rotate(),
+        lazy.layout.flip(),
         desc="Flip master window"
     ),
 
@@ -52,7 +52,7 @@ keys = [
 
     Key([mod], "q", lazy.restart(), desc="Restart Qtile, preserve windows"),
     Key([mod, "shift"], "q", lazy.shutdown(), desc="Shutdown Qtile"),
-    Key([mod, "shift"], "semicolon", lazy.spawncmd(),
+    Key([mod], "semicolon", lazy.spawncmd(),
         desc="Spawn a command using a prompt widget"),
 
     Key(
@@ -81,6 +81,10 @@ keys = [
         [], "XF86MonBrightnessDown",
         lazy.spawn("xbacklight -dec 3")
     ),
+
+    Key([mod], "comma", lazy.to_screen(0), desc="Move to first screen"),
+    Key([mod], "period", lazy.to_screen(1), desc="Move to second screen"),
+
     Key([mod], "1", lazy.group["term"].toscreen(), desc="Move to 'term' group"),
     Key([mod], "2", lazy.group["dev"].toscreen(), desc="Move to 'dev' group"),
     Key([mod], "3", lazy.group["www"].toscreen(), desc="Move to 'www' group"),
@@ -109,17 +113,17 @@ layouts = [
     layout.MonadTall(
         border_focus='#ff00ff',
         border_normal='#222222',
-        border_width=1,
-        single_border_width=1,
-        margin=7,
-        single_margin=7,
+        border_width=2,
+        single_border_width=2,
+        margin=8,
+        single_margin=8,
     ),
     layout.Max(),
     layout.Tile(),
 ]
 
 widget_defaults = dict(
-    font='IBM Plex Mono',
+    font='IBM Plex Sans',
     fontsize=15,
     padding=3,
 )
@@ -139,8 +143,18 @@ screens = [
                     urgent_border='#ff00ff',
                 ),
                 widget.TextBox(text='🍔'),
-                widget.CurrentLayout(),
-                widget.Prompt(prompt=' 🔫 {prompt}: '),
+                widget.CurrentLayout(
+                    foreground="#999999",
+                ),
+                widget.WindowCount(
+                    text_format=': {num}',
+                    foreground="#999999",
+                ),
+                widget.Prompt(
+                    background='#ff00ff',
+                    foreground='#ffffff',
+                    prompt=' 🔫 {prompt}: ',
+                ),
                 widget.WindowName(
                     format=' 🍕 {state}{name}',
                     foreground="#777777",
@@ -157,6 +171,7 @@ screens = [
                     backlight_name='intel_backlight',
                     format='☀️ {percent:2.0%}'),
                 widget.Wlan(
+                    disconnected_message=' ⛱️ N/A',
                     interface='wlp0s20f3',
                     format=' 📡 {essid}'
                 ),
@@ -165,11 +180,12 @@ screens = [
                     discharge_char='🔥',
                     empty_char='⛺',
                     format=' {char} {percent:2.0%} {hour:d}:{min:02d}',
-                    full_char='🦖',
+                    full_char='🔋',
+                    show_short_text=False,
                     unknown_char='⚡',
                     update_interval=10,
                 ),
-                widget.Clock(format=' ⏰ %a %d/%m/%Y %H:%M'),
+                widget.Clock(format=' ⏰ %a %d/%m/%Y #%W %H:%M'),
                 widget.CheckUpdates(
                     distro='Arch_checkupdates',
                     display_format=' 🦣 {updates} ',
