@@ -46,6 +46,7 @@ Plug 'machakann/vim-highlightedyank'
 
 Plug 'preservim/nerdtree'
 Plug 'jeetsukumaran/vim-buffergator'
+Plug 'junegunn/fzf.vim'
 Plug 'vim-airline/vim-airline'
 
 Plug 'sheerun/vim-polyglot' 
@@ -68,17 +69,22 @@ let g:mapleader = "\<Space>"
 map q: <Nop>
 nnoremap Q <nop>
 
+"Easy ESC
+inoremap jk <Esc>
+inoremap kj <Esc>
+
 "Indent lines
 vnoremap < <gv
 vnoremap > >gv
 
-"NERD Commenter
-nnoremap <silent> <leader>cc :NERDCommenterToggle<CR>
-nnoremap <silent> <leader>cu :NERDCommenterUncomment<CR>
-
 "NERDTree
 nnoremap <silent> <leader>e :NERDTreeFind<CR>
 let NERDTreeQuitOnOpen=1
+
+"FZF
+nnoremap <silent> <leader>f :Files<CR>
+nnoremap <silent> <leader>g :GFiles<CR>
+nnoremap <silent> <leader>r :Rg<CR>
 
 "COC
 command! -nargs=0 Prettier :CocCommand prettier.formatFile
