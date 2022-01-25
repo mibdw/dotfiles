@@ -111,15 +111,20 @@ groups = [
 
 layouts = [
     layout.MonadTall(
-        border_focus='#ff00ff',
+        border_focus='#00ff00',
         border_normal='#222222',
-        border_width=2,
-        single_border_width=2,
+        border_width=3,
+        single_border_width=3,
         margin=8,
         single_margin=8,
     ),
     layout.Max(),
-    layout.Tile(),
+    layout.Tile(
+        border_focus='#00ff00',
+        border_normal='#222222',
+        border_width=3,
+        margin=8,
+    ),
 ]
 
 widget_defaults = dict(
@@ -138,9 +143,12 @@ screens = [
                     block_highlight_text_color="#ffffff",
                     disable_drag=True,
                     highlight_method='block',
+                    other_screen_border='#ff99ff',
+                    other_current_screen_border='#ff00ff',
                     rounded=False,
-                    this_current_screen_border='#333333',
-                    urgent_border='#ff00ff',
+                    this_screen_border='#9999ff',
+                    this_current_screen_border='#0000ff',
+                    urgent_border='#00ff00',
                 ),
                 widget.TextBox(text='🍔'),
                 widget.CurrentLayout(
