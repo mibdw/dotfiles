@@ -23,6 +23,7 @@ set completeopt=longest,menu
 set hlsearch
 set incsearch
 set wildmenu
+set laststatus=2
 
 set list
 set showbreak=↪\
@@ -47,7 +48,6 @@ Plug 'machakann/vim-highlightedyank'
 Plug 'preservim/nerdtree'
 Plug 'jeetsukumaran/vim-buffergator'
 Plug 'junegunn/fzf.vim'
-Plug 'vim-airline/vim-airline'
 
 Plug 'sheerun/vim-polyglot' 
 Plug 'neoclide/coc.nvim', { 'branch': 'release' }
