@@ -104,7 +104,7 @@ groups = [
     Group("term", spawn="kitty"),
     Group("dev", spawn="kitty"),
     Group("www", spawn="firefox"),
-    Group("sys", spawn="keepassxc"),
+    Group("sys", spawn="keepassxc", layout="floating"),
     Group("rdp"),
     Group("..."),
 ]
@@ -124,6 +124,11 @@ layouts = [
         border_normal='#222222',
         border_width=3,
         margin=8,
+    ),
+    layout.Floating(
+        border_focus='#00ff00',
+        border_normal='#222222',
+        border_width=3,
     ),
 ]
 
