@@ -7,3 +7,8 @@ alias tmux='tmux -u'
 alias xba='xbacklight -set'
 
 source ~/.bash_aliases
+
+function fish_greeting
+  ~/.config/food --random
+end
+funcsave fish_greeting

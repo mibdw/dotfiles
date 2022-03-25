@@ -23,7 +23,10 @@ set completeopt=longest,menu
 set hlsearch
 set incsearch
 set wildmenu
-set laststatus=2
+
+set number
+set relativenumber
+set signcolumn=number
 
 if exists('+termguicolors')
   let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
@@ -31,12 +34,35 @@ if exists('+termguicolors')
   set termguicolors
 endif
 
+function! GitBranch()
+  let l:branchname = fugitive#head()
+  return strlen(l:branchname) > 0?'  '.l:branchname.' ':''
+endfunction
+
+function! GitStats()
+  let l:branchstats = sy#repo#get_stats_decorated()
+  return strlen(l:branchstats) > 0?' '.l:branchstats.' ':''
+endfunction
+
+set laststatus=2
+set statusline=
+set statusline+=%{GitBranch()}
+set statusline+=%{GitStats()}
+set statusline+=\ %f
+set statusline+=\ %m
+set statusline+=%=
+set statusline+=\ %y
+set statusline+=\ %p%%
+set statusline+=\ %l,%c
+set statusline+=\ 
+
 "Plugins
 filetype plugin on
 
 call plug#begin('~/.vim/plugged')
 
 Plug 'tpope/vim-obsession'
+Plug 'tpope/vim-fugitive'
 Plug 'mhinz/vim-signify'
 Plug 'preservim/nerdcommenter'
 Plug 'machakann/vim-highlightedyank'
