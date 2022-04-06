@@ -28,6 +28,8 @@ set number
 set relativenumber
 set signcolumn=number
 
+set clipboard=unnamedplus
+
 if exists('+termguicolors')
   let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
   let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
@@ -36,7 +38,7 @@ endif
 
 function! GitBranch()
   let l:branchname = fugitive#head()
-  return strlen(l:branchname) > 0?'  '.l:branchname.' ':''
+  return strlen(l:branchname) > 0?'  ['.l:branchname.'] ':''
 endfunction
 
 function! GitStats()
@@ -46,7 +48,9 @@ endfunction
 
 set laststatus=2
 set statusline=
+set statusline+=
 set statusline+=%{GitBranch()}
+set statusline+=
 set statusline+=%{GitStats()}
 set statusline+=\ %f
 set statusline+=\ %m
