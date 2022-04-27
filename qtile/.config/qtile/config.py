@@ -55,6 +55,10 @@ keys = [
     Key([mod], "semicolon", lazy.spawncmd(),
         desc="Spawn a command using a prompt widget"),
 
+    Key([mod, "shift"], "s", 
+        lazy.spawn(["sh", "-c", "maim -s -u | xclip -selection clipboard -t image/png"])
+        , desc="Copy screenshot selection to clipboard"),
+
     Key(
         [mod, "shift"], "d",
         lazy.spawn(["sh", "-c", "nitrogen --force-setter=xinerama --head=0 --set-zoom-fill --random & nitrogen --force-setter=xinerama --head=1 --set-zoom-fill --random &"])
