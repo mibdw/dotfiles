@@ -182,7 +182,6 @@ screens = [
                     },
                     name_transform=lambda name: name.upper(),
                 ),
-                widget.Notify(),
                 widget.Volume(emoji=True),
                 widget.Backlight(
                     backlight_name='intel_backlight',
