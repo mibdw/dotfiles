@@ -33,4 +33,5 @@ return require('packer').startup(function()
 
   use 'sainnhe/sonokai'
   use 'dracula/vim'
+
 end)
