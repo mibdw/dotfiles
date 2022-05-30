@@ -8,6 +8,7 @@ return require('packer').startup(function()
   use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
   use 'preservim/nerdcommenter'
   use 'machakann/vim-highlightedyank'
+  use 'tpope/vim-surround'
 
   use 'preservim/nerdtree'
   use 'jeetsukumaran/vim-buffergator'

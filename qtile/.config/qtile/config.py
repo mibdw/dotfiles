@@ -42,7 +42,7 @@ keys = [
         desc="Flip master window"
     ),
 
-    Key([mod], "n", lazy.layout.normalize(), desc="Reset all window sizes"),
+    Key([mod, "shift"], "z", lazy.layout.normalize(), desc="Reset all window sizes"),
 
     Key([mod], "Return", lazy.spawn(terminal), desc="Launch terminal"),
     Key([mod], "b", lazy.spawn(browser), desc="Launch browser"),
@@ -55,12 +55,19 @@ keys = [
     Key([mod], "semicolon", lazy.spawncmd(),
         desc="Spawn a command using a prompt widget"),
 
-    Key([mod, "shift"], "s", 
+    Key([mod, "shift"], "o", 
         lazy.spawn(["sh", "-c", "maim -s -u | xclip -selection clipboard -t image/png"])
         , desc="Copy screenshot selection to clipboard"),
 
+    Key([mod, "shift"], "n", 
+        lazy.spawn(["sh", "-c", "dunstctl close-all"])
+        , desc="Close all Dunst notifications"),
+
+    Key([mod], "n", 
+        lazy.spawn(["sh", "-c", "dunstctl history-pop"])
+        , desc="Pop last Dunst notifications"),
     Key(
-        [mod, "shift"], "d",
+        [mod], "x",
         lazy.spawn(["sh", "-c", "nitrogen --force-setter=xinerama --head=0 --set-zoom-fill --random & nitrogen --force-setter=xinerama --head=1 --set-zoom-fill --random &"])
     ),
 
@@ -85,23 +92,26 @@ keys = [
         [], "XF86MonBrightnessDown",
         lazy.spawn("xbacklight -dec 3")
     ),
-
     Key([mod], "comma", lazy.to_screen(0), desc="Move to first screen"),
     Key([mod], "period", lazy.to_screen(1), desc="Move to second screen"),
 
-    Key([mod], "1", lazy.group["term"].toscreen(), desc="Move to 'term' group"),
-    Key([mod], "2", lazy.group["dev"].toscreen(), desc="Move to 'dev' group"),
-    Key([mod], "3", lazy.group["www"].toscreen(), desc="Move to 'www' group"),
-    Key([mod], "4", lazy.group["sys"].toscreen(), desc="Move to 'sys' group"),
-    Key([mod], "5", lazy.group["rdp"].toscreen(), desc="Move to 'rdp' group"),
-    Key([mod], "6", lazy.group["..."].toscreen(), desc="Move to '...' group"),
+    Key([mod], "t", lazy.group["term"].toscreen(), desc="Move to 'term' group"),
+    Key([mod], "d", lazy.group["dev"].toscreen(), desc="Move to 'dev' group"),
+    Key([mod], "w", lazy.group["www"].toscreen(), desc="Move to 'www' group"),
+    Key([mod], "s", lazy.group["sys"].toscreen(), desc="Move to 'sys' group"),
+    Key([mod], "r", lazy.group["rdp"].toscreen(), desc="Move to 'rdp' group"),
+    Key([mod], "z", lazy.group["..."].toscreen(), desc="Move to '...' group"),
+    Key([mod], "m", lazy.group["mail"].toscreen(), desc="Move to 'mail' group"),
+    Key([mod], "c", lazy.group["cal"].toscreen(), desc="Move to 'cal' group"),
 
-    Key([mod, "shift"], "1", lazy.window.togroup("term"), desc="Move window to 'term' group"),
-    Key([mod, "shift"], "2", lazy.window.togroup("dev"), desc="Move window to 'dev' group"),
-    Key([mod, "shift"], "3", lazy.window.togroup("www"), desc="Move window to 'www' group"),
-    Key([mod, "shift"], "4", lazy.window.togroup("sys"), desc="Move window to 'sys' group"),
-    Key([mod, "shift"], "5", lazy.window.togroup("rdp"), desc="Move window to 'rdp' group"),
-    Key([mod, "shift"], "6", lazy.window.togroup("..."), desc="Move window to '...' group"),
+    Key([mod, "shift"], "t", lazy.window.togroup("term"), desc="Move window to 'term' group"),
+    Key([mod, "shift"], "d", lazy.window.togroup("dev"), desc="Move window to 'dev' group"),
+    Key([mod, "shift"], "w", lazy.window.togroup("www"), desc="Move window to 'www' group"),
+    Key([mod, "shift"], "s", lazy.window.togroup("sys"), desc="Move window to 'sys' group"),
+    Key([mod, "shift"], "r", lazy.window.togroup("rdp"), desc="Move window to 'rdp' group"),
+    Key([mod, "shift"], "z", lazy.window.togroup("..."), desc="Move window to '...' group"),
+    Key([mod, "shift"], "m", lazy.window.togroup("mail"), desc="Move window to 'mail' group"),
+    Key([mod, "shift"], "c", lazy.window.togroup("cal"), desc="Move window to 'cal' group"),
 ]
 
 groups = [
@@ -111,28 +121,30 @@ groups = [
     Group("sys", spawn="keepassxc", layout="floating"),
     Group("rdp"),
     Group("..."),
+    Group("mail", spawn="mailspring"),
+    Group("cal", spawn="gnome-calendar"),
 ]
 
 layouts = [
     layout.MonadTall(
         border_focus='#00ff00',
         border_normal='#222222',
-        border_width=3,
-        single_border_width=3,
-        margin=8,
-        single_margin=8,
+        border_width=1,
+        single_border_width=1,
+        margin=5,
+        single_margin=5,
     ),
     layout.Max(),
     layout.Tile(
         border_focus='#00ff00',
         border_normal='#222222',
-        border_width=3,
-        margin=8,
+        border_width=1,
+        margin=5,
     ),
     layout.Floating(
         border_focus='#00ff00',
         border_normal='#222222',
-        border_width=3,
+        border_width=1,
     ),
 ]
 
@@ -189,7 +201,8 @@ screens = [
                 widget.Wlan(
                     disconnected_message=' ⛱️ N/A',
                     interface='wlp0s20f3',
-                    format=' 📡 {essid}'
+                    format=' 📡 {essid}',
+                    mouse_callbacks={'Button1': lazy.spawn(["sh", "-c", "nm-connection-editor"])}
                 ),
                 widget.Battery(
                     charge_char='⚡',

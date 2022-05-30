@@ -37,7 +37,7 @@ if exists('+termguicolors')
 endif
 
 function! GitBranch()
-  let l:branchname = fugitive#head()
+  let l:branchname = FugitiveHead()
   return strlen(l:branchname) > 0?'  ['.l:branchname.'] ':''
 endfunction
 
