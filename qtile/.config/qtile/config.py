@@ -93,14 +93,14 @@ keys = [
         lazy.spawn("xbacklight -dec 3")
     ),
     Key([mod], "comma", lazy.to_screen(0), desc="Move to first screen"),
-    Key([mod], "period", lazy.to_screen(1), desc="Move to second screen"),
+    Key([mod, "shift"], "comma", lazy.to_screen(1), desc="Move to second screen"),
 
     Key([mod], "t", lazy.group["term"].toscreen(), desc="Move to 'term' group"),
     Key([mod], "d", lazy.group["dev"].toscreen(), desc="Move to 'dev' group"),
     Key([mod], "w", lazy.group["www"].toscreen(), desc="Move to 'www' group"),
     Key([mod], "s", lazy.group["sys"].toscreen(), desc="Move to 'sys' group"),
     Key([mod], "r", lazy.group["rdp"].toscreen(), desc="Move to 'rdp' group"),
-    Key([mod], "z", lazy.group["..."].toscreen(), desc="Move to '...' group"),
+    Key([mod], "period", lazy.group["..."].toscreen(), desc="Move to '...' group"),
     Key([mod], "m", lazy.group["mail"].toscreen(), desc="Move to 'mail' group"),
     Key([mod], "c", lazy.group["cal"].toscreen(), desc="Move to 'cal' group"),
 
@@ -109,7 +109,7 @@ keys = [
     Key([mod, "shift"], "w", lazy.window.togroup("www"), desc="Move window to 'www' group"),
     Key([mod, "shift"], "s", lazy.window.togroup("sys"), desc="Move window to 'sys' group"),
     Key([mod, "shift"], "r", lazy.window.togroup("rdp"), desc="Move window to 'rdp' group"),
-    Key([mod, "shift"], "z", lazy.window.togroup("..."), desc="Move window to '...' group"),
+    Key([mod, "shift"], "period", lazy.window.togroup("..."), desc="Move window to '...' group"),
     Key([mod, "shift"], "m", lazy.window.togroup("mail"), desc="Move window to 'mail' group"),
     Key([mod, "shift"], "c", lazy.window.togroup("cal"), desc="Move window to 'cal' group"),
 ]
