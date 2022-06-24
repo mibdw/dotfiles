@@ -23,11 +23,6 @@ set completeopt=menu,menuone,noselect
 set hlsearch
 set incsearch
 set wildmenu
-
-set number
-set relativenumber
-set signcolumn=number
-
 set clipboard=unnamedplus
 
 if exists('+termguicolors')

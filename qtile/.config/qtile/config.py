@@ -92,22 +92,22 @@ keys = [
         [], "XF86MonBrightnessDown",
         lazy.spawn("xbacklight -dec 3")
     ),
-    Key([mod], "comma", lazy.to_screen(0), desc="Move to first screen"),
-    Key([mod, "shift"], "comma", lazy.to_screen(1), desc="Move to second screen"),
+    Key([mod], "apostrophe", lazy.to_screen(0), desc="Move to first screen"),
+    Key([mod], "backslash", lazy.to_screen(1), desc="Move to second screen"),
 
-    Key([mod], "t", lazy.group["term"].toscreen(), desc="Move to 'term' group"),
+    Key([mod], "s", lazy.group["sys"].toscreen(), desc="Move to 'sys' group"),
     Key([mod], "d", lazy.group["dev"].toscreen(), desc="Move to 'dev' group"),
     Key([mod], "w", lazy.group["www"].toscreen(), desc="Move to 'www' group"),
-    Key([mod], "s", lazy.group["sys"].toscreen(), desc="Move to 'sys' group"),
+    Key([mod], "p", lazy.group["psw"].toscreen(), desc="Move to 'psw' group"),
     Key([mod], "r", lazy.group["rdp"].toscreen(), desc="Move to 'rdp' group"),
     Key([mod], "period", lazy.group["..."].toscreen(), desc="Move to '...' group"),
     Key([mod], "m", lazy.group["mail"].toscreen(), desc="Move to 'mail' group"),
     Key([mod], "c", lazy.group["cal"].toscreen(), desc="Move to 'cal' group"),
 
-    Key([mod, "shift"], "t", lazy.window.togroup("term"), desc="Move window to 'term' group"),
+    Key([mod, "shift"], "s", lazy.window.togroup("sys"), desc="Move window to 'sys' group"),
     Key([mod, "shift"], "d", lazy.window.togroup("dev"), desc="Move window to 'dev' group"),
     Key([mod, "shift"], "w", lazy.window.togroup("www"), desc="Move window to 'www' group"),
-    Key([mod, "shift"], "s", lazy.window.togroup("sys"), desc="Move window to 'sys' group"),
+    Key([mod, "shift"], "p", lazy.window.togroup("psw"), desc="Move window to 'psw' group"),
     Key([mod, "shift"], "r", lazy.window.togroup("rdp"), desc="Move window to 'rdp' group"),
     Key([mod, "shift"], "period", lazy.window.togroup("..."), desc="Move window to '...' group"),
     Key([mod, "shift"], "m", lazy.window.togroup("mail"), desc="Move window to 'mail' group"),
@@ -115,10 +115,10 @@ keys = [
 ]
 
 groups = [
-    Group("term", spawn="kitty"),
+    Group("sys", spawn="kitty"),
     Group("dev", spawn="kitty"),
     Group("www", spawn="firefox"),
-    Group("sys", spawn="keepassxc", layout="floating"),
+    Group("psw", spawn="keepassxc", layout="floating"),
     Group("rdp"),
     Group("..."),
     Group("mail", spawn="mailspring"),
@@ -127,22 +127,16 @@ groups = [
 
 layouts = [
     layout.MonadTall(
-        border_focus='#00ff00',
+        border_focus='#bd93f9',
         border_normal='#222222',
         border_width=1,
-        single_border_width=1,
-        margin=5,
-        single_margin=5,
-    ),
-    layout.Max(),
-    layout.Tile(
-        border_focus='#00ff00',
-        border_normal='#222222',
-        border_width=1,
-        margin=5,
+        single_border_width=0,
+        margin=0,
+        single_margin=0,
+        ratio=.618
     ),
     layout.Floating(
-        border_focus='#00ff00',
+        border_focus='#bd93f9',
         border_normal='#222222',
         border_width=1,
     ),
@@ -159,19 +153,18 @@ screens = [
     Screen(
         top=bar.Bar(
             [
-                widget.TextBox(text='🦆'),
                 widget.GroupBox(
-                    block_highlight_text_color="#ffffff",
+                    block_highlight_text_color="#000000",
                     disable_drag=True,
                     highlight_method='block',
-                    other_screen_border='#ff99ff',
-                    other_current_screen_border='#ff00ff',
+                    other_screen_border='#ffce99',
+                    other_current_screen_border='#ff9c33',
                     rounded=False,
-                    this_screen_border='#9999ff',
-                    this_current_screen_border='#0000ff',
+                    this_screen_border='#d3b7fb',
+                    this_current_screen_border='#a76ef7',
                     urgent_border='#00ff00',
                 ),
-                widget.TextBox(text='🍔'),
+                widget.TextBox(text=' 🍔'),
                 widget.CurrentLayout(
                     foreground="#999999",
                 ),
@@ -179,20 +172,14 @@ screens = [
                     text_format=': {num}',
                     foreground="#999999",
                 ),
-                widget.Prompt(
-                    background='#ff00ff',
-                    foreground='#ffffff',
-                    prompt=' 🔫 {prompt}: ',
-                ),
                 widget.WindowName(
                     format=' 🍕 {state}{name}',
                     foreground="#777777",
                 ),
-                widget.Chord(
-                    chords_colors={
-                        'launch': ("#ff0000", "#ffffff"),
-                    },
-                    name_transform=lambda name: name.upper(),
+                widget.Prompt(
+                    background='#a76ef7',
+                    foreground='#000000',
+                    prompt=' 🔫 {prompt}: ',
                 ),
                 widget.Volume(emoji=True),
                 widget.Backlight(
@@ -227,7 +214,10 @@ screens = [
                 )
             ],
             26,
-            opacity=0.8
+            background="#111111",
+            border_width=[0, 0, 1, 0],
+            border_color="#bd93f9",
+            opacity=.9
         ),
     ),
 ]
