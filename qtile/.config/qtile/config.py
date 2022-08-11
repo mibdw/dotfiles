@@ -5,7 +5,7 @@ import subprocess
 from typing import List
 
 from libqtile import bar, hook, layout, widget
-from libqtile.config import Click, Drag, Group, Key, Match, Screen
+from libqtile.config import Click, Drag, DropDown, Group, Key, Match, ScratchPad, Screen
 from libqtile.lazy import lazy
 
 mod = "mod4"
@@ -29,11 +29,13 @@ keys = [
     Key([mod], "Right", lazy.screen.next_group(), desc="Move to next group"),
     Key([mod], "i", lazy.screen.toggle_group(), desc="Toggle latest group"),
 
-    Key([mod], "u", 
+    Key([mod], "z", lazy.hide_show_bar("top"), desc="Hide/show bar"),
+
+    Key([mod, "shift"], "u", 
         lazy.layout.grow(),
         desc="Grow master window"
     ),
-    Key([mod], "y", 
+    Key([mod, "shift"], "y", 
         lazy.layout.shrink(),
         desc="Shrink master window"
     ),
@@ -52,7 +54,10 @@ keys = [
 
     Key([mod], "q", lazy.restart(), desc="Restart Qtile, preserve windows"),
     Key([mod, "shift"], "q", lazy.shutdown(), desc="Shutdown Qtile"),
-    Key([mod], "semicolon", lazy.spawncmd(),
+
+    Key([mod], "semicolon", lazy.spawn("rofi -show drun -display-drun \"🦆\""),
+        desc="Spawn Rofi application launcher"),
+    Key([mod], "e", lazy.spawn("rofi -show emoji -display-emoji \"🤣\""),
         desc="Spawn a command using a prompt widget"),
 
     Key([mod, "shift"], "o", 
@@ -98,31 +103,22 @@ keys = [
     Key([mod], "s", lazy.group["sys"].toscreen(), desc="Move to 'sys' group"),
     Key([mod], "d", lazy.group["dev"].toscreen(), desc="Move to 'dev' group"),
     Key([mod], "w", lazy.group["www"].toscreen(), desc="Move to 'www' group"),
-    Key([mod], "p", lazy.group["psw"].toscreen(), desc="Move to 'psw' group"),
     Key([mod], "r", lazy.group["rdp"].toscreen(), desc="Move to 'rdp' group"),
     Key([mod], "period", lazy.group["..."].toscreen(), desc="Move to '...' group"),
     Key([mod], "m", lazy.group["mail"].toscreen(), desc="Move to 'mail' group"),
     Key([mod], "c", lazy.group["cal"].toscreen(), desc="Move to 'cal' group"),
 
+    Key([mod], "y", lazy.group["scratchpad"].dropdown_toggle("term"), desc="Toggle terminal scratchpad"),
+    Key([mod], "p", lazy.group["scratchpad"].dropdown_toggle("keepassxc"), desc="Toggle password scratchpad"),
+    Key([mod], "u", lazy.group["scratchpad"].dropdown_toggle("remote"), desc="Toggle RDP scratchpad"),
+
     Key([mod, "shift"], "s", lazy.window.togroup("sys"), desc="Move window to 'sys' group"),
     Key([mod, "shift"], "d", lazy.window.togroup("dev"), desc="Move window to 'dev' group"),
     Key([mod, "shift"], "w", lazy.window.togroup("www"), desc="Move window to 'www' group"),
-    Key([mod, "shift"], "p", lazy.window.togroup("psw"), desc="Move window to 'psw' group"),
     Key([mod, "shift"], "r", lazy.window.togroup("rdp"), desc="Move window to 'rdp' group"),
     Key([mod, "shift"], "period", lazy.window.togroup("..."), desc="Move window to '...' group"),
     Key([mod, "shift"], "m", lazy.window.togroup("mail"), desc="Move window to 'mail' group"),
     Key([mod, "shift"], "c", lazy.window.togroup("cal"), desc="Move window to 'cal' group"),
-]
-
-groups = [
-    Group("sys", spawn="kitty"),
-    Group("dev", spawn="kitty"),
-    Group("www", spawn="firefox"),
-    Group("psw", spawn="keepassxc", layout="floating"),
-    Group("rdp"),
-    Group("..."),
-    Group("mail", spawn="mailspring"),
-    Group("cal", spawn="gnome-calendar"),
 ]
 
 layouts = [
@@ -133,14 +129,28 @@ layouts = [
         single_border_width=0,
         margin=0,
         single_margin=0,
-        ratio=.618
-    ),
-    layout.Floating(
-        border_focus='#bd93f9',
-        border_normal='#222222',
-        border_width=1,
+        ratio=.618,
     ),
 ]
+
+groups = [
+    Group("sys", spawn="kitty"),
+    Group("dev", spawn="kitty"),
+    Group("www", spawn="firefox"),
+    Group("rdp"),
+    Group("..."),
+    Group("mail", spawn="mailspring"),
+    Group("cal", spawn="gnome-calendar"),
+    ScratchPad("scratchpad", [
+        DropDown("term", 
+            ["kitty", "-e", "tmux", "new-session", "-A", "-s", "scratch"], 
+            x=0.15, y=0.05, width=0.7, height=0.8, opacity=1
+        ),
+        DropDown("keepassxc", "keepassxc", opacity=1, width=0.6, height=0.7, x=0.2, y=0.1),
+        DropDown("remote", "remmina", opacity=1, width=0.6, height=0.7, x=0.2, y=0.1),
+    ]),
+]
+
 
 widget_defaults = dict(
     font='IBM Plex Sans',
@@ -164,22 +174,9 @@ screens = [
                     this_current_screen_border='#a76ef7',
                     urgent_border='#00ff00',
                 ),
-                widget.TextBox(text=' 🍔'),
-                widget.CurrentLayout(
-                    foreground="#999999",
-                ),
-                widget.WindowCount(
-                    text_format=': {num}',
-                    foreground="#999999",
-                ),
                 widget.WindowName(
                     format=' 🍕 {state}{name}',
                     foreground="#777777",
-                ),
-                widget.Prompt(
-                    background='#a76ef7',
-                    foreground='#000000',
-                    prompt=' 🔫 {prompt}: ',
                 ),
                 widget.Volume(emoji=True),
                 widget.Backlight(
@@ -235,20 +232,23 @@ dgroups_app_rules = []  # type: List
 follow_mouse_focus = True
 bring_front_click = False
 cursor_warp = False
-
-floating_layout = layout.Floating(float_rules=[
-    *layout.Floating.default_float_rules,
-    Match(wm_class='confirmreset'),  # gitk
-    Match(wm_class='makebranch'),  # gitk
-    Match(wm_class='maketag'),  # gitk
-    Match(wm_class='ssh-askpass'),  # ssh-askpass
-    Match(title='branchdialog'),  # gitk
-    Match(title='pinentry'),  # GPG key password entry
-])
+floating_layout = layout.Floating(
+    border_focus='#fa877a',
+    border_normal='#222222',
+    border_width=5,
+    float_rules=[
+        *layout.Floating.default_float_rules,
+        Match(wm_class='confirmreset'),  # gitk
+        Match(wm_class='makebranch'),  # gitk
+        Match(wm_class='maketag'),  # gitk
+        Match(wm_class='ssh-askpass'),  # ssh-askpass
+        Match(title='branchdialog'),  # gitk
+        Match(title='pinentry'),  # GPG key password entry
+    ]
+)
 auto_fullscreen = True
 focus_on_window_activation = "smart"
 reconfigure_screens = True
-
 @hook.subscribe.startup_once
 def autostart():
     home = os.path.expanduser('~/.config/autostart')

@@ -23,7 +23,7 @@ set completeopt=menu,menuone,noselect
 set hlsearch
 set incsearch
 set wildmenu
-set clipboard=unnamedplus
+set clipboard+=unnamedplus
 
 if exists('+termguicolors')
   let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
