@@ -105,20 +105,17 @@ keys = [
     Key([mod], "w", lazy.group["www"].toscreen(), desc="Move to 'www' group"),
     Key([mod], "r", lazy.group["rdp"].toscreen(), desc="Move to 'rdp' group"),
     Key([mod], "period", lazy.group["..."].toscreen(), desc="Move to '...' group"),
-    Key([mod], "m", lazy.group["mail"].toscreen(), desc="Move to 'mail' group"),
-    Key([mod], "c", lazy.group["cal"].toscreen(), desc="Move to 'cal' group"),
 
     Key([mod], "y", lazy.group["scratchpad"].dropdown_toggle("term"), desc="Toggle terminal scratchpad"),
     Key([mod], "p", lazy.group["scratchpad"].dropdown_toggle("keepassxc"), desc="Toggle password scratchpad"),
-    Key([mod], "u", lazy.group["scratchpad"].dropdown_toggle("remote"), desc="Toggle RDP scratchpad"),
-
+    Key([mod], "u", lazy.group["scratchpad"].dropdown_toggle("remote"), desc="Toggle RDP manager scratchpad"),
+    Key([mod], "c", lazy.group["scratchpad"].dropdown_toggle("network"), desc="Toggle network manager scratchpad"),
+    
     Key([mod, "shift"], "s", lazy.window.togroup("sys"), desc="Move window to 'sys' group"),
     Key([mod, "shift"], "d", lazy.window.togroup("dev"), desc="Move window to 'dev' group"),
     Key([mod, "shift"], "w", lazy.window.togroup("www"), desc="Move window to 'www' group"),
     Key([mod, "shift"], "r", lazy.window.togroup("rdp"), desc="Move window to 'rdp' group"),
     Key([mod, "shift"], "period", lazy.window.togroup("..."), desc="Move window to '...' group"),
-    Key([mod, "shift"], "m", lazy.window.togroup("mail"), desc="Move window to 'mail' group"),
-    Key([mod, "shift"], "c", lazy.window.togroup("cal"), desc="Move window to 'cal' group"),
 ]
 
 layouts = [
@@ -129,6 +126,8 @@ layouts = [
         single_border_width=0,
         margin=0,
         single_margin=0,
+        change_size=5,
+        change_ratio=0.01,
         ratio=.618,
     ),
 ]
@@ -139,15 +138,14 @@ groups = [
     Group("www", spawn="firefox"),
     Group("rdp"),
     Group("..."),
-    Group("mail", spawn="mailspring"),
-    Group("cal", spawn="gnome-calendar"),
     ScratchPad("scratchpad", [
         DropDown("term", 
             ["kitty", "-e", "tmux", "new-session", "-A", "-s", "scratch"], 
-            x=0.15, y=0.05, width=0.7, height=0.8, opacity=1
+            x=0.15, y=0.08, width=0.7, height=0.8, opacity=1, on_focus_lost_hide=False
         ),
-        DropDown("keepassxc", "keepassxc", opacity=1, width=0.6, height=0.7, x=0.2, y=0.1),
-        DropDown("remote", "remmina", opacity=1, width=0.6, height=0.7, x=0.2, y=0.1),
+        DropDown("keepassxc", "keepassxc", opacity=1, width=0.6, height=0.7, x=0.2, y=0.1, on_focus_lost_hide=False),
+        DropDown("remote", "remmina", opacity=1, width=0.6, height=0.7, x=0.2, y=0.1, on_focus_lost_hide=False),
+        DropDown("network", "nm-connection-editor", opacity=1, width=0.4, height=0.7, x=0.3, y=0.1, on_focus_lost_hide=False),
     ]),
 ]
 
@@ -186,7 +184,7 @@ screens = [
                     disconnected_message=' ⛱️ N/A',
                     interface='wlp0s20f3',
                     format=' 📡 {essid}',
-                    mouse_callbacks={'Button1': lazy.spawn(["sh", "-c", "nm-connection-editor"])}
+                    mouse_callbacks={'Button1': lazy.group["scratchpad"].dropdown_toggle("network")}
                 ),
                 widget.Battery(
                     charge_char='⚡',
@@ -244,6 +242,7 @@ floating_layout = layout.Floating(
         Match(wm_class='ssh-askpass'),  # ssh-askpass
         Match(title='branchdialog'),  # gitk
         Match(title='pinentry'),  # GPG key password entry
+        Match(title='nm-connection-editor'),  # GPG key password entry
     ]
 )
 auto_fullscreen = True

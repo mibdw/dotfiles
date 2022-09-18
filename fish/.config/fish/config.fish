@@ -9,8 +9,5 @@ set fish_greeting
 
 alias tmux='tmux -u'
 alias xba='xbacklight -set'
-alias la='exa -la --group-directories-first'
-alias ff='firefox'
 
-source ~/.bash_aliases
-
+source ~/.config/fish/fish_aliases
