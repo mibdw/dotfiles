@@ -72,9 +72,12 @@ keys = [
         lazy.spawn(["sh", "-c", "dunstctl history-pop"])
         , desc="Pop last Dunst notifications"),
     Key(
-        [mod], "x",
+        [mod, "control"], "x",
         lazy.spawn(["sh", "-c", "nitrogen --force-setter=xinerama --head=0 --set-zoom-fill --random & nitrogen --force-setter=xinerama --head=1 --set-zoom-fill --random &"])
     ),
+    Key([mod, "shift"], "h", 
+        lazy.spawn(["sh", "-c", "putty -load Hermes -l ben -pw Erasmus01a"])
+        , desc="Launch Hermes"),
 
     Key(
         [], "XF86AudioMute",
@@ -100,21 +103,24 @@ keys = [
     Key([mod], "apostrophe", lazy.to_screen(0), desc="Move to first screen"),
     Key([mod], "backslash", lazy.to_screen(1), desc="Move to second screen"),
 
-    Key([mod], "s", lazy.group["sys"].toscreen(), desc="Move to 'sys' group"),
+    Key([mod], "a", lazy.group["abc"].toscreen(), desc="Move to 'abc' group"),
     Key([mod], "d", lazy.group["dev"].toscreen(), desc="Move to 'dev' group"),
     Key([mod], "w", lazy.group["www"].toscreen(), desc="Move to 'www' group"),
-    Key([mod], "r", lazy.group["rdp"].toscreen(), desc="Move to 'rdp' group"),
+    Key([mod], "x", lazy.group["xyz"].toscreen(), desc="Move to 'xyz' group"),
     Key([mod], "period", lazy.group["..."].toscreen(), desc="Move to '...' group"),
 
+    Key([mod], "s", lazy.group["scratchpad"].dropdown_toggle("sys"), desc="Toggle sys scratchpad"),
     Key([mod], "y", lazy.group["scratchpad"].dropdown_toggle("term"), desc="Toggle terminal scratchpad"),
+    Key([mod], "f", lazy.group["scratchpad"].dropdown_toggle("files"), desc="Toggle file manager scratchpad"),
     Key([mod], "p", lazy.group["scratchpad"].dropdown_toggle("keepassxc"), desc="Toggle password scratchpad"),
-    Key([mod], "u", lazy.group["scratchpad"].dropdown_toggle("remote"), desc="Toggle RDP manager scratchpad"),
+    Key([mod], "r", lazy.group["scratchpad"].dropdown_toggle("remote"), desc="Toggle RDP manager scratchpad"),
     Key([mod], "c", lazy.group["scratchpad"].dropdown_toggle("network"), desc="Toggle network manager scratchpad"),
+    # Key([mod, "shift"], "h", lazy.group["scratchpad"].dropdown_toggle("hermes"), desc="Toggle Hermes scratchpad"),
     
-    Key([mod, "shift"], "s", lazy.window.togroup("sys"), desc="Move window to 'sys' group"),
+    Key([mod, "shift"], "a", lazy.window.togroup("abc"), desc="Move window to 'abc' group"),
     Key([mod, "shift"], "d", lazy.window.togroup("dev"), desc="Move window to 'dev' group"),
     Key([mod, "shift"], "w", lazy.window.togroup("www"), desc="Move window to 'www' group"),
-    Key([mod, "shift"], "r", lazy.window.togroup("rdp"), desc="Move window to 'rdp' group"),
+    Key([mod, "shift"], "x", lazy.window.togroup("xyz"), desc="Move window to 'xyz' group"),
     Key([mod, "shift"], "period", lazy.window.togroup("..."), desc="Move window to '...' group"),
 ]
 
@@ -133,19 +139,28 @@ layouts = [
 ]
 
 groups = [
-    Group("sys", spawn="kitty"),
-    Group("dev", spawn="kitty"),
     Group("www", spawn="firefox"),
-    Group("rdp"),
+    Group("dev", spawn="kitty"),
+    Group("abc"),
+    Group("xyz"),
     Group("..."),
     ScratchPad("scratchpad", [
+        DropDown("sys", 
+            ["kitty", "-e", "tmux", "new-session", "-A", "-s", "sys"], 
+            x=0.1, y=0.07, width=0.8, height=0.82, opacity=1, on_focus_lost_hide=False
+        ),
         DropDown("term", 
             ["kitty", "-e", "tmux", "new-session", "-A", "-s", "scratch"], 
-            x=0.15, y=0.08, width=0.7, height=0.8, opacity=1, on_focus_lost_hide=False
+            x=0.1, y=0.07, width=0.8, height=0.82, opacity=1, on_focus_lost_hide=False
+        ),
+        DropDown("files", 
+            ["kitty", "-e", "ranger"], 
+            x=0.1, y=0.07, width=0.8, height=0.82, opacity=1, on_focus_lost_hide=False
         ),
         DropDown("keepassxc", "keepassxc", opacity=1, width=0.6, height=0.7, x=0.2, y=0.1, on_focus_lost_hide=False),
         DropDown("remote", "remmina", opacity=1, width=0.6, height=0.7, x=0.2, y=0.1, on_focus_lost_hide=False),
         DropDown("network", "nm-connection-editor", opacity=1, width=0.4, height=0.7, x=0.3, y=0.1, on_focus_lost_hide=False),
+        # DropDown("hermes", "putty -load Hermes -l ben -pw Erasmus01a", opacity=1, width=0.6, height=0.7, x=0.2, y=0.15, on_focus_lost_hide=False),
     ]),
 ]
 
@@ -175,6 +190,10 @@ screens = [
                 widget.WindowName(
                     format=' 🍕 {state}{name}',
                     foreground="#777777",
+                ),
+                widget.Pomodoro(
+                   prefix_inactive='🍅',
+                   prefix_active='🍅' 
                 ),
                 widget.Volume(emoji=True),
                 widget.Backlight(
@@ -231,9 +250,9 @@ follow_mouse_focus = True
 bring_front_click = False
 cursor_warp = False
 floating_layout = layout.Floating(
-    border_focus='#fa877a',
+    border_focus='#a76ef7',
     border_normal='#222222',
-    border_width=5,
+    border_width=1,
     float_rules=[
         *layout.Floating.default_float_rules,
         Match(wm_class='confirmreset'),  # gitk
@@ -243,6 +262,7 @@ floating_layout = layout.Floating(
         Match(title='branchdialog'),  # gitk
         Match(title='pinentry'),  # GPG key password entry
         Match(title='nm-connection-editor'),  # GPG key password entry
+        Match(title='putty'),  # GPG key password entry
     ]
 )
 auto_fullscreen = True

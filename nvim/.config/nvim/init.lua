@@ -27,12 +27,13 @@ vim.keymap.set("v", "<", "<gv")
 vim.keymap.set("v", ">", ">gv")
 vim.keymap.set("n", "ss", "i<cr><esc>")
 vim.keymap.set("n", "<leader>e", "<cmd>NERDTreeFind<cr>")
-vim.keymap.set("n", "<leader>b", "<cmd>BufferGatorToggle<cr>")
+vim.keymap.set("n", "<leader>b", "<cmd>BuffergatorToggle<cr>")
 vim.keymap.set("n", "<leader>f", "<cmd>Files<cr>")
 vim.keymap.set("n", "<leader>g", "<cmd>GFiles<cr>")
 vim.keymap.set("n", "<leader>r", "<cmd>Rg<cr>")
 vim.keymap.set("n", "<leader>h", "<cmd>Helptags<cr>")
 vim.keymap.set("n", "<leader>o", "<cmd>History<cr>")
+vim.keymap.set("n", "<leader>p", "<cmd>lua vim.lsp.buf.format()<cr>")
 
 -- HIGHLIGH YANK
 vim.cmd[[ autocmd TextYankPost * silent! lua vim.highlight.on_yank {higroup=(vim.fn["hlexists"]("HighlightedyankRegion") > 0 and "HighlightedyankRegion" or "IncSearch"), timeout=1000} ]]
@@ -46,6 +47,7 @@ require("packer").startup(function()
   use "mhinz/vim-signify"
   use "preservim/nerdcommenter"
   use "Mofiqul/dracula.nvim"
+  use "sainnhe/sonokai"
   use { "nvim-lualine/lualine.nvim",
     requires = { "kyazdani42/nvim-web-devicons", opt = true }
   }
@@ -60,9 +62,10 @@ require("packer").startup(function()
   use "hrsh7th/cmp-path"
   use "L3MON4D3/LuaSnip"
   use "saadparwaiz1/cmp_luasnip"
-  use "lukas-reineke/lsp-format.nvim"
   use "rafamadriz/friendly-snippets"
   use "onsails/lspkind.nvim"
+  use "sbdchd/neoformat"
+  use 'sunjon/shade.nvim' 
 end)
 
 -- COLORSCHEME 
@@ -83,6 +86,9 @@ vim.g.NERDTreeQuitOnOpen = 1
 
 -- FZF
 vim.cmd [[let g:fzf_layout = { "window": { "width": 0.9, "height": 0.8 } } ]]
+
+-- NEOFORMAT
+vim.cmd [[ autocmd BufWritePre *.js,*.jsx,*.json,*.scss,*.css,*.html,*.svg Neoformat ]]
 
 -- TREESITTER
 require"nvim-treesitter.configs".setup {
@@ -144,6 +150,7 @@ cmp.setup({
     { name = "nvim_lsp" },
     { name = "luasnip" },
     { name = "buffer" },
+    { name = "path" },
   }),
   formatting = {
     format = require("lspkind").cmp_format({
@@ -161,24 +168,34 @@ require("luasnip.loaders.from_vscode").lazy_load()
 require("luasnip.loaders.from_snipmate").lazy_load()
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
-capabilities = require("cmp_nvim_lsp").update_capabilities(capabilities)
+capabilities = require("cmp_nvim_lsp").default_capabilities(capabilities)
 
 require("lspconfig").tsserver.setup {
   capabilities = capabilities,
-  on_attach =  require("lsp-format").on_attach
 }
+
 require("lspconfig").html.setup {
   capabilities = capabilities,
-  on_attach =  require("lsp-format").on_attach
 }
+
 require("lspconfig").cssls.setup {
   capabilities = capabilities,
-  on_attach =  require("lsp-format").on_attach
 }
 require("lspconfig").jsonls.setup {
   capabilities = capabilities,
-  on_attach =  require("lsp-format").on_attach
 }
+
 require("lspconfig").eslint.setup {
   capabilities = capabilities,
 }
+
+--SHADE
+require'shade'.setup({
+  overlay_opacity = 70,
+  opacity_step = 1,
+  keys = {
+    brightness_up    = '<C-Up>',
+    brightness_down  = '<C-Down>',
+    toggle           = '<Leader>s',
+  }
+})

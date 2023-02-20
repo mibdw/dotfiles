@@ -1,6 +1,6 @@
 #!/bin/sh
 systemctl --user start rslsync &
-picom --experimental-backends &
+picom &
 ~/.config/wallpaper-rotation &
 unclutter &
 dunst &

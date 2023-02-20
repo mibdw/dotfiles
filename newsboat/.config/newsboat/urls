@@ -1,0 +1,8 @@
+https://feeds.nos.nl/nosnieuwsalgemeen all news dutch combine
+http://rss.cnn.com/rss/cnn_topstories.rss all news english
+http://newsrss.bbc.co.uk/rss/newsonline_world_edition/front_page/rss.xml all news english
+http://feeds.feedburner.com/tweakers/mixed.rss all tech dutch combine
+https://hnrss.org/best all tech english combine
+https://archlinux.org/feeds/news/ all tech english linux combine
+"query:dutch Articles:tags # \"dutch\""
+"query:combine Articles:tags # \"combine\""
