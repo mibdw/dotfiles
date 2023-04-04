@@ -134,7 +134,7 @@ layouts = [
         single_margin=0,
         change_size=5,
         change_ratio=0.01,
-        ratio=.618,
+        ratio=.5,
     ),
 ]
 

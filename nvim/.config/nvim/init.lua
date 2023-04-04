@@ -26,13 +26,13 @@ vim.keymap.set("i", "kj", "<esc>")
 vim.keymap.set("v", "<", "<gv")
 vim.keymap.set("v", ">", ">gv")
 vim.keymap.set("n", "ss", "i<cr><esc>")
-vim.keymap.set("n", "<leader>e", "<cmd>NERDTreeFind<cr>")
-vim.keymap.set("n", "<leader>b", "<cmd>BuffergatorToggle<cr>")
-vim.keymap.set("n", "<leader>f", "<cmd>Files<cr>")
-vim.keymap.set("n", "<leader>g", "<cmd>GFiles<cr>")
-vim.keymap.set("n", "<leader>r", "<cmd>Rg<cr>")
-vim.keymap.set("n", "<leader>h", "<cmd>Helptags<cr>")
-vim.keymap.set("n", "<leader>o", "<cmd>History<cr>")
+vim.keymap.set("n", "<leader>e", "<cmd>Telescope file_browser path=%:p:h select_buffer=true<cr>")
+vim.keymap.set("n", "<leader>b", "<cmd>Telescope buffers<cr>")
+vim.keymap.set("n", "<leader>f", "<cmd>Telescope find_files<cr>")
+vim.keymap.set("n", "<leader>g", "<cmd>Telescope git_files<cr>")
+vim.keymap.set("n", "<leader>r", "<cmd>Telescope live_grep<cr>")
+vim.keymap.set("n", "<leader>h", "<cmd>Telescope help_tags<cr>")
+vim.keymap.set("n", "<leader>o", "<cmd>Telescope command_history<cr>")
 vim.keymap.set("n", "<leader>p", "<cmd>lua vim.lsp.buf.format()<cr>")
 
 -- HIGHLIGH YANK
@@ -47,13 +47,13 @@ require("packer").startup(function()
   use "mhinz/vim-signify"
   use "preservim/nerdcommenter"
   use "Mofiqul/dracula.nvim"
-  use "sainnhe/sonokai"
+  --use "sainnhe/sonokai"
   use { "nvim-lualine/lualine.nvim",
     requires = { "kyazdani42/nvim-web-devicons", opt = true }
   }
-  use "preservim/nerdtree"
-  use "jeetsukumaran/vim-buffergator"
-  use "junegunn/fzf.vim"
+  --use "preservim/nerdtree"
+  --use "jeetsukumaran/vim-buffergator"
+  --use "junegunn/fzf.vim"
   use { "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" }
   use "neovim/nvim-lspconfig"
   use "hrsh7th/nvim-cmp"
@@ -66,11 +66,40 @@ require("packer").startup(function()
   use "onsails/lspkind.nvim"
   use "sbdchd/neoformat"
   use 'sunjon/shade.nvim' 
+  use {
+    'nvim-telescope/telescope.nvim', tag = '0.1.1',
+    requires = { {'nvim-lua/plenary.nvim'} }
+  }
+  use {
+      "nvim-telescope/telescope-file-browser.nvim",
+      requires = { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim" }
+  }
 end)
+
+-- TELESCOPE
+require("telescope").setup {
+  defaults = {
+    mappings = {
+      n = {
+        ['<c-d>'] = require('telescope.actions').delete_buffer
+      },
+      i = {
+        ['<c-d>'] = require('telescope.actions').delete_buffer
+      },
+    },
+  },
+  extensions = {
+    file_browser = {
+      hijack_netrw = true,
+    },
+  },
+}
+require("telescope").load_extension "file_browser"
 
 -- COLORSCHEME 
 require("dracula").setup({ transparent_bg = true })
 vim.cmd [[ colorscheme dracula ]]
+vim.api.nvim_set_hl(0, "TelescopeNormal", {bg="#000000"})
 
 -- LUA LINE
 require("lualine").setup {
