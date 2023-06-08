@@ -109,7 +109,7 @@ keys = [
     Key([mod], "x", lazy.group["xyz"].toscreen(), desc="Move to 'xyz' group"),
     Key([mod], "period", lazy.group["..."].toscreen(), desc="Move to '...' group"),
 
-    Key([mod], "s", lazy.group["scratchpad"].dropdown_toggle("sys"), desc="Toggle sys scratchpad"),
+    Key([mod], "s", lazy.group["scratchpad"].dropdown_toggle("system"), desc="Toggle system scratchpad"),
     Key([mod], "y", lazy.group["scratchpad"].dropdown_toggle("term"), desc="Toggle terminal scratchpad"),
     Key([mod], "f", lazy.group["scratchpad"].dropdown_toggle("files"), desc="Toggle file manager scratchpad"),
     Key([mod], "p", lazy.group["scratchpad"].dropdown_toggle("keepassxc"), desc="Toggle password scratchpad"),
@@ -136,6 +136,17 @@ layouts = [
         change_ratio=0.01,
         ratio=.5,
     ),
+    layout.MonadWide(
+        border_focus='#bd93f9',
+        border_normal='#222222',
+        border_width=1,
+        single_border_width=0,
+        margin=0,
+        single_margin=0,
+        change_size=5,
+        change_ratio=0.01,
+        ratio=.5,
+    ),
 ]
 
 groups = [
@@ -145,8 +156,8 @@ groups = [
     Group("xyz"),
     Group("..."),
     ScratchPad("scratchpad", [
-        DropDown("sys", 
-            ["kitty", "-e", "tmux", "new-session", "-A", "-s", "sys"], 
+        DropDown("system", 
+            ["kitty", "-e", "tmux", "new-session", "-A", "-s", "system"], 
             x=0.1, y=0.07, width=0.8, height=0.82, opacity=1, on_focus_lost_hide=False
         ),
         DropDown("term", 
@@ -186,6 +197,10 @@ screens = [
                     this_screen_border='#d3b7fb',
                     this_current_screen_border='#a76ef7',
                     urgent_border='#00ff00',
+                ),
+                widget.CurrentLayout(
+                    fmt=' 🍔 {}',
+                    foreground="#777777",
                 ),
                 widget.WindowName(
                     format=' 🍕 {state}{name}',

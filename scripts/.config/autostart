@@ -4,3 +4,4 @@ picom &
 ~/.config/wallpaper-rotation &
 unclutter &
 dunst &
+autorandr --load dual &

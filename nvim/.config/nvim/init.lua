@@ -26,7 +26,7 @@ vim.keymap.set("i", "kj", "<esc>")
 vim.keymap.set("v", "<", "<gv")
 vim.keymap.set("v", ">", ">gv")
 vim.keymap.set("n", "ss", "i<cr><esc>")
-vim.keymap.set("n", "<leader>e", "<cmd>Telescope file_browser path=%:p:h select_buffer=true<cr>")
+vim.keymap.set("n", "<leader>e", "<cmd>NvimTreeToggle<cr>")
 vim.keymap.set("n", "<leader>b", "<cmd>Telescope buffers<cr>")
 vim.keymap.set("n", "<leader>f", "<cmd>Telescope find_files<cr>")
 vim.keymap.set("n", "<leader>g", "<cmd>Telescope git_files<cr>")
@@ -74,7 +74,17 @@ require("packer").startup(function()
       "nvim-telescope/telescope-file-browser.nvim",
       requires = { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim" }
   }
+  use {
+    'nvim-tree/nvim-tree.lua',
+    requires = {
+      'nvim-tree/nvim-web-devicons', -- optional
+    },
+    config = function()
+      require("nvim-tree").setup {}
+    end
+  }
 end)
+
 
 -- TELESCOPE
 require("telescope").setup {
@@ -109,9 +119,15 @@ require("lualine").setup {
     section_separators = { left = " ", right = " "},
   },
 }
-
--- NERD TREE
-vim.g.NERDTreeQuitOnOpen = 1
+-- NVIM TREE
+require("nvim-tree").setup {
+  actions = {
+    open_file = {
+      quit_on_open = true,
+    },
+  },
+}
+--vim.g.NERDTreeQuitOnOpen = 1
 
 -- FZF
 vim.cmd [[let g:fzf_layout = { "window": { "width": 0.9, "height": 0.8 } } ]]
