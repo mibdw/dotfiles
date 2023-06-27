@@ -188,14 +188,16 @@ screens = [
         top=bar.Bar(
             [
                 widget.GroupBox(
-                    block_highlight_text_color="#000000",
+                    active="#111111",
+                    inactive="#111111",
+                    block_highlight_text_color="#ffffff",
                     disable_drag=True,
                     highlight_method='block',
-                    other_screen_border='#ffce99',
-                    other_current_screen_border='#ff9c33',
+                    other_screen_border='#acb0be',
+                    other_current_screen_border='#fe640b',
                     rounded=False,
-                    this_screen_border='#d3b7fb',
-                    this_current_screen_border='#a76ef7',
+                    this_screen_border='#acb0be',
+                    this_current_screen_border='#1e66f5',
                     urgent_border='#00ff00',
                 ),
                 widget.CurrentLayout(
@@ -208,17 +210,21 @@ screens = [
                 ),
                 widget.Pomodoro(
                    prefix_inactive='🍅',
-                   prefix_active='🍅' 
+                   prefix_active='🍅',
+                   foreground='#111111',
                 ),
                 widget.Volume(emoji=True),
                 widget.Backlight(
                     backlight_name='intel_backlight',
-                    format='☀️ {percent:2.0%}'),
+                    format='☀️ {percent:2.0%}',
+                    foreground='#111111',
+                ),
                 widget.Wlan(
                     disconnected_message=' ⛱️ N/A',
                     interface='wlp0s20f3',
                     format=' 📡 {essid}',
-                    mouse_callbacks={'Button1': lazy.group["scratchpad"].dropdown_toggle("network")}
+                    mouse_callbacks={'Button1': lazy.group["scratchpad"].dropdown_toggle("network")},
+                    foreground='#111111',
                 ),
                 widget.Battery(
                     charge_char='⚡',
@@ -229,24 +235,31 @@ screens = [
                     show_short_text=False,
                     unknown_char='⚡',
                     update_interval=10,
+                    foreground='#111111',
                 ),
-                widget.Clock(format=' ⏰ %a %d/%m/%Y #%W %H:%M'),
+                widget.Clock(
+                    format=' ⏰ %a %d/%m/%Y #%W %H:%M',
+                    foreground='#111111',
+                ),
                 widget.CheckUpdates(
                     distro='Arch_checkupdates',
                     display_format=' 🦣 {updates} ',
                     update_interval=1800,
+                    colour_have_updates='#111111',
+                    colour_no_updates='#111111',
+                    foreground='#111111',
                 ),
                 widget.QuickExit(
                     countdown_format='{}',
                     default_text='💥',
-                    foreground='#ff0000'
+                    foreground='#111111',
                 )
             ],
             26,
-            background="#111111",
+            background="#dce0e8",
             border_width=[0, 0, 1, 0],
             border_color="#bd93f9",
-            opacity=.9
+            opacity=1
         ),
     ),
 ]

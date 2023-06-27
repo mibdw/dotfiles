@@ -1,7 +1,7 @@
 #!/bin/sh
 systemctl --user start rslsync &
-picom &
+picom --config ~/.config/picom/picom.conf &
 ~/.config/wallpaper-rotation &
 unclutter &
 dunst &
-autorandr --load dual &
+autorandr --load clam &

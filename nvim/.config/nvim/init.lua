@@ -17,6 +17,7 @@ vim.o.clipboard = "unnamedplus"
 vim.o.ignorecase = true
 vim.o.smartcase = true
 vim.o.pumheight = 25
+vim.o.background = "light"
 
 --KEYBINDINGS
 vim.g.mapleader = " "
@@ -26,7 +27,7 @@ vim.keymap.set("i", "kj", "<esc>")
 vim.keymap.set("v", "<", "<gv")
 vim.keymap.set("v", ">", ">gv")
 vim.keymap.set("n", "ss", "i<cr><esc>")
-vim.keymap.set("n", "<leader>e", "<cmd>NvimTreeToggle<cr>")
+vim.keymap.set("n", "<leader>e", "<cmd>Telescope file_browser path=%:p:h select_buffer=true<cr>")
 vim.keymap.set("n", "<leader>b", "<cmd>Telescope buffers<cr>")
 vim.keymap.set("n", "<leader>f", "<cmd>Telescope find_files<cr>")
 vim.keymap.set("n", "<leader>g", "<cmd>Telescope git_files<cr>")
@@ -46,8 +47,12 @@ require("packer").startup(function()
   use "tpope/vim-surround"
   use "mhinz/vim-signify"
   use "preservim/nerdcommenter"
-  use "Mofiqul/dracula.nvim"
+
+  --use "NLKNguyen/papercolor-theme"
   --use "sainnhe/sonokai"
+  --use "Mofiqul/dracula.nvim"
+  --use { "ellisonleao/gruvbox.nvim" }
+  use { "catppuccin/nvim", as = "catppuccin" }
   use { "nvim-lualine/lualine.nvim",
     requires = { "kyazdani42/nvim-web-devicons", opt = true }
   }
@@ -65,7 +70,7 @@ require("packer").startup(function()
   use "rafamadriz/friendly-snippets"
   use "onsails/lspkind.nvim"
   use "sbdchd/neoformat"
-  use 'sunjon/shade.nvim' 
+  --use 'sunjon/shade.nvim' 
   use {
     'nvim-telescope/telescope.nvim', tag = '0.1.1',
     requires = { {'nvim-lua/plenary.nvim'} }
@@ -74,15 +79,16 @@ require("packer").startup(function()
       "nvim-telescope/telescope-file-browser.nvim",
       requires = { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim" }
   }
-  use {
-    'nvim-tree/nvim-tree.lua',
-    requires = {
-      'nvim-tree/nvim-web-devicons', -- optional
-    },
-    config = function()
-      require("nvim-tree").setup {}
-    end
-  }
+
+  --use {
+    --'nvim-tree/nvim-tree.lua',
+    --requires = {
+      --'nvim-tree/nvim-web-devicons', -- optional
+    --},
+    --config = function()
+      --require("nvim-tree").setup {}
+    --end
+  --}
 end)
 
 
@@ -107,26 +113,58 @@ require("telescope").setup {
 require("telescope").load_extension "file_browser"
 
 -- COLORSCHEME 
-require("dracula").setup({ transparent_bg = true })
-vim.cmd [[ colorscheme dracula ]]
-vim.api.nvim_set_hl(0, "TelescopeNormal", {bg="#000000"})
+--require("dracula").setup({ transparent_bg = true })
+--vim.cmd [[ colorscheme dracula ]]
+--vim.api.nvim_set_hl(0, "TelescopeNormal", {bg="#000000"})
+require("catppuccin").setup({
+    flavour = "latte", -- latte, frappe, macchiato, mocha
+    transparent_background = true, -- disables setting the background color.
+    show_end_of_buffer = false, -- shows the '~' characters after the end of buffers
+    term_colors = false, -- sets terminal colors (e.g. `g:terminal_color_0`)
+    dim_inactive = {
+      enabled = true, -- dims the background color of inactive window
+      shade = "dark",
+      percentage = 0.05, -- percentage of the shade to apply to the inactive window
+    },
+    styles = { -- Handles the styles of general hi groups (see `:h highlight-args`):
+        comments = { "italic" }, -- Change the style of comments
+        conditionals = { "italic" },
+    },
+    color_overrides = {
+        latte = {
+            --base = "#eaeaea",
+            text = "#111111",
+        },
+    },
+    integrations = {
+        cmp = true,
+        gitsigns = true,
+        nvimtree = true,
+        telescope = true,
+        notify = false,
+        mini = false,
+    },
+})
+
+-- setup must be called before loading
+vim.cmd.colorscheme "catppuccin"
 
 -- LUA LINE
 require("lualine").setup {
   options = {
-    theme = "dracula-nvim",
+    theme = "catppuccin-latte",
     component_separators = { left = " ", right = " "},
     section_separators = { left = " ", right = " "},
   },
 }
--- NVIM TREE
-require("nvim-tree").setup {
-  actions = {
-    open_file = {
-      quit_on_open = true,
-    },
-  },
-}
+---- NVIM TREE
+--require("nvim-tree").setup {
+  --actions = {
+    --open_file = {
+      --quit_on_open = true,
+    --},
+  --},
+--}
 --vim.g.NERDTreeQuitOnOpen = 1
 
 -- FZF
@@ -233,14 +271,3 @@ require("lspconfig").jsonls.setup {
 require("lspconfig").eslint.setup {
   capabilities = capabilities,
 }
-
---SHADE
-require'shade'.setup({
-  overlay_opacity = 70,
-  opacity_step = 1,
-  keys = {
-    brightness_up    = '<C-Up>',
-    brightness_down  = '<C-Down>',
-    toggle           = '<Leader>s',
-  }
-})
