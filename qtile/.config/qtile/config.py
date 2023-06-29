@@ -9,7 +9,7 @@ from libqtile.config import Click, Drag, DropDown, Group, Key, Match, ScratchPad
 from libqtile.lazy import lazy
 
 mod = "mod4"
-terminal = "kitty"
+terminal = "alacritty"
 browser = "firefox"
 
 keys = [
@@ -151,21 +151,21 @@ layouts = [
 
 groups = [
     Group("www", spawn="firefox"),
-    Group("dev", spawn="kitty"),
+    Group("dev", spawn=terminal),
     Group("abc"),
     Group("xyz"),
     Group("..."),
     ScratchPad("scratchpad", [
         DropDown("system", 
-            ["kitty", "-e", "tmux", "new-session", "-A", "-s", "system"], 
+            [terminal, "-e", "tmux", "new-session", "-A", "-s", "system"], 
             x=0.1, y=0.07, width=0.8, height=0.82, opacity=1, on_focus_lost_hide=False
         ),
         DropDown("term", 
-            ["kitty", "-e", "tmux", "new-session", "-A", "-s", "scratch"], 
+            [terminal, "-e", "tmux", "new-session", "-A", "-s", "scratch"], 
             x=0.1, y=0.07, width=0.8, height=0.82, opacity=1, on_focus_lost_hide=False
         ),
         DropDown("files", 
-            ["kitty", "-e", "ranger"], 
+            [terminal, "-e", "ranger"], 
             x=0.1, y=0.07, width=0.8, height=0.82, opacity=1, on_focus_lost_hide=False
         ),
         DropDown("keepassxc", "keepassxc", opacity=1, width=0.6, height=0.7, x=0.2, y=0.1, on_focus_lost_hide=False),
@@ -189,7 +189,7 @@ screens = [
             [
                 widget.GroupBox(
                     active="#111111",
-                    inactive="#111111",
+                    inactive="#aaaaaa",
                     block_highlight_text_color="#ffffff",
                     disable_drag=True,
                     highlight_method='block',
