@@ -1,3 +1,18 @@
+-- BOOTSTRAP LAZY.NVIM
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+if not vim.loop.fs_stat(lazypath) then
+  vim.fn.system({
+    "git",
+    "clone",
+    "--filter=blob:none",
+    "https://github.com/folke/lazy.nvim.git",
+    "--branch=stable", -- latest stable release
+    lazypath,
+  })
+end
+
+vim.opt.rtp:prepend(lazypath)
+
 -- GENERAL SETTINGS
 vim.o.termguicolors = true
 vim.o.timeoutlen = 500
@@ -41,38 +56,36 @@ vim.keymap.set("n", "<leader>t", "<cmd>source ~/.config/nvim/init.lua<cr>")
 vim.cmd[[ autocmd TextYankPost * silent! lua vim.highlight.on_yank {higroup=(vim.fn["hlexists"]("HighlightedyankRegion") > 0 and "HighlightedyankRegion" or "IncSearch"), timeout=1000} ]]
 
 --PLUGINS
-require("packer").startup(function()
-  use "wbthomason/packer.nvim"
-  use "tpope/vim-obsession"
-  use "tpope/vim-fugitive"
-  use "tpope/vim-surround"
-  use "mhinz/vim-signify"
-  use "preservim/nerdcommenter"
-  use { "catppuccin/nvim", as = "catppuccin" }
-  use { "nvim-lualine/lualine.nvim",
-    requires = { "kyazdani42/nvim-web-devicons", opt = true }
+require("lazy").setup({
+  "tpope/vim-obsession",
+  "tpope/vim-fugitive",
+  "tpope/vim-surround",
+  "mhinz/vim-signify",
+  "preservim/nerdcommenter",
+  { "catppuccin/nvim", name = "catppuccin" },
+  { "nvim-lualine/lualine.nvim",
+    dependencies = { "kyazdani42/nvim-web-devicons", lazy = true }
+  },
+  { "nvim-treesitter/nvim-treesitter", build = ":TSUpdate" },
+  "neovim/nvim-lspconfig",
+  "hrsh7th/nvim-cmp",
+  "hrsh7th/cmp-nvim-lsp",
+  "hrsh7th/cmp-buffer",
+  "hrsh7th/cmp-path",
+  "L3MON4D3/LuaSnip",
+  "saadparwaiz1/cmp_luasnip",
+  "rafamadriz/friendly-snippets",
+  "onsails/lspkind.nvim",
+  "sbdchd/neoformat",
+  {
+    'nvim-telescope/telescope.nvim', version = '0.1.4',
+    dependencies = { {'nvim-lua/plenary.nvim'} }
+  },
+  {
+    "nvim-telescope/telescope-file-browser.nvim",
+    dependencies = { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim" }
   }
-  use { "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" }
-  use "neovim/nvim-lspconfig"
-  use "hrsh7th/nvim-cmp"
-  use "hrsh7th/cmp-nvim-lsp"
-  use "hrsh7th/cmp-buffer"
-  use "hrsh7th/cmp-path"
-  use "L3MON4D3/LuaSnip"
-  use "saadparwaiz1/cmp_luasnip"
-  use "rafamadriz/friendly-snippets"
-  use "onsails/lspkind.nvim"
-  use "sbdchd/neoformat"
-  --use 'sunjon/shade.nvim' 
-  use {
-    'nvim-telescope/telescope.nvim', tag = '0.1.1',
-    requires = { {'nvim-lua/plenary.nvim'} }
-  }
-  use {
-      "nvim-telescope/telescope-file-browser.nvim",
-      requires = { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim" }
-  }
-end)
+})
 
 
 -- TELESCOPE

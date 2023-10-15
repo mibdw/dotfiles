@@ -76,7 +76,7 @@ keys = [
         lazy.spawn(["sh", "-c", "nitrogen --force-setter=xinerama --head=0 --set-zoom-fill --random & nitrogen --force-setter=xinerama --head=1 --set-zoom-fill --random &"])
     ),
     Key([mod, "shift"], "h", 
-        lazy.spawn(["sh", "-c", "putty -load Hermes -l ben -pw Erasmus01a"])
+        lazy.spawn(["sh", "-c", "putty -load Hermes -l benvandenende -pw Erasmus01a"])
         , desc="Launch Hermes"),
 
     Key(
@@ -115,6 +115,7 @@ keys = [
     Key([mod], "p", lazy.group["scratchpad"].dropdown_toggle("keepassxc"), desc="Toggle password scratchpad"),
     Key([mod], "r", lazy.group["scratchpad"].dropdown_toggle("remote"), desc="Toggle RDP manager scratchpad"),
     Key([mod], "c", lazy.group["scratchpad"].dropdown_toggle("network"), desc="Toggle network manager scratchpad"),
+    Key([mod], "t", lazy.group["scratchpad"].dropdown_toggle("thunderbird"), desc="Toggle e-mail client"),
     # Key([mod, "shift"], "h", lazy.group["scratchpad"].dropdown_toggle("hermes"), desc="Toggle Hermes scratchpad"),
     
     Key([mod, "shift"], "a", lazy.window.togroup("abc"), desc="Move window to 'abc' group"),
@@ -171,6 +172,7 @@ groups = [
         DropDown("keepassxc", "keepassxc", opacity=1, width=0.6, height=0.7, x=0.2, y=0.1, on_focus_lost_hide=False),
         DropDown("remote", "remmina", opacity=1, width=0.6, height=0.7, x=0.2, y=0.1, on_focus_lost_hide=False),
         DropDown("network", "nm-connection-editor", opacity=1, width=0.4, height=0.7, x=0.3, y=0.1, on_focus_lost_hide=False),
+        DropDown("thunderbird", "/opt/thunderbird-beta/thunderbird", opacity=1, width=0.8, height=0.82, x=0.1, y=0.07, on_focus_lost_hide=False),
         # DropDown("hermes", "putty -load Hermes -l ben -pw Erasmus01a", opacity=1, width=0.6, height=0.7, x=0.2, y=0.15, on_focus_lost_hide=False),
     ]),
 ]
