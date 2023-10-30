@@ -1,0 +1,8 @@
+#!/bin/bash
+
+if pactl get-sink-mute @DEFAULT_SINK@ | grep -q "yes"; then
+  echo "🔇 0%"
+else
+  variable=`pactl get-sink-volume @DEFAULT_SINK@ | awk '{print $5}'`
+  echo "🔊 ${variable}"
+fi
