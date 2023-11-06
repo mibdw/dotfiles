@@ -10,4 +10,6 @@ plugins=(
 source $ZSH/oh-my-zsh.sh
 eval "$(starship init zsh)"
 
+alias ls="eza"
+
 source ~/.zsh_aliases

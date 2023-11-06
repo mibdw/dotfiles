@@ -1,7 +1,8 @@
 //Modify this file to change what commands output to your statusbar, and recompile using the make command.
 static const Block blocks[] = {
 	/*Icon*/	/*Command*/		/*Update Interval*/	/*Update Signal*/
-	{" ", " ~/.config/getvolume", 0, 1},
+	{" ", "~/.config/getvolume", 0, 1},
+	{" ☀️ ", "~/.config/brightness | grep 'eDP-1' | awk '{print int($3 * 100) \"%\"}'", 0, 2},
 	{" 📡 ", "nmcli -t -f active,ssid dev wifi | grep -E '^yes' | cut -d: -f2", 30, 0},
 	{" 🔋 ", "acpi | awk '{print $4}' | sed 's/,//g'", 30, 0},
 	{" ⏰ ", "date '+%d/%m/%Y #%W %H:%M '", 5, 0},

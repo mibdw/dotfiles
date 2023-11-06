@@ -21,9 +21,9 @@ static const Rule rules[] = {
 	 *	WM_NAME(STRING) = title
 	 */
 	/* class      instance    title       tags mask     isfloating   monitor    float x,y,w,h         floatborderpx*/
-	{ "Remmina",  NULL,       NULL,       0,            1,           -1,        460,140,1000,800,        1 },
-	{ "KeePassXC",  NULL,     NULL,       0,            1,           -1,        360,140,1200,800,        1 },
-	{ "Putty",    NULL,       NULL,       0,            1,           -1 ,       460,140,1000,800,        1 },
+	{ "Remmina",  NULL,       NULL,       0,            1,           -1,        460,140,1000,800,     1 },
+	{ "KeePassXC",  NULL,     NULL,       0,            1,           -1,        360,140,1200,800,     1 },
+	{ "Putty",    NULL,       NULL,       1 << 8,       0,           -1,        460,140,1000,800,     1 },
 };
 
 /* layout(s) */
@@ -63,13 +63,16 @@ static const Key keys[] = {
   { MODKEY,                       XK_Return, spawn,          {.v = termcmd } },
   { MODKEY,                       XK_b,      spawn,          {.v = browsercmd } },
   { MODKEY,                       XK_o,      spawn,          SHCMD("maim -s -u | xclip -selection clipboard -t image/png") },
+  { MODKEY|ShiftMask,             XK_o,      spawn,          SHCMD("maim -s -u ~/Pictures/Screenshots/$(date +%s).png") },
   { MODKEY,                       XK_n,      spawn,          SHCMD("dunstctl history-pop") },
   { MODKEY|ShiftMask,             XK_n,      spawn,          SHCMD("dunstctl close-all") },
   { MODKEY|ControlMask,           XK_x,      spawn,          SHCMD("nitrogen --force-setter=xinerama --head=0 --set-zoom-fill --random & nitrogen --force-setter=xinerama --head=1 --set-zoom-fill --random &") },
-  { MODKEY|ShiftMask,             XK_h,      spawn,          SHCMD("putty -load Hermes -l benvandenende -pw Erasmus01a") },
+  { MODKEY|ControlMask,           XK_h,      spawn,          SHCMD("putty -load Hermes -l benvandenende -pw Erasmus01a") },
   { MODKEY,                       XK_a,      spawn,          SHCMD("pactl set-sink-mute @DEFAULT_SINK@ toggle & pkill -RTMIN+1 dwmblocks") },
   { MODKEY|ShiftMask,             XK_a,      spawn,          SHCMD("pactl -- set-sink-volume 0 +2% & pkill -RTMIN+1 dwmblocks") },
   { MODKEY|ControlMask,           XK_a,      spawn,          SHCMD("pactl -- set-sink-volume 0 -2% & pkill -RTMIN+1 dwmblocks") },
+  { MODKEY,                       XK_s,      spawn,          SHCMD("~/.config/brightness + eDP-1 0.02 & pkill -RTMIN+2 dwmblocks") },
+  { MODKEY|ShiftMask,             XK_s,      spawn,          SHCMD("~/.config/brightness - eDP-1 0.02 & pkill -RTMIN+2 dwmblocks") },
 
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
 	{ MODKEY,                       XK_Down,   focusstack,     {.i = +1 } },
@@ -81,10 +84,10 @@ static const Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_k,      setmfact,       {.f = +0.05} },
 	{ MODKEY|ShiftMask,             XK_Up,     setmfact,       {.f = +0.05} },
 
-	{ MODKEY,                       XK_l,      shiftviewclients,    { .i = +1 } },
-	{ MODKEY,                       XK_Right,  shiftviewclients,    { .i = +1 } },
-  { MODKEY,	                      XK_h,      shiftviewclients,    { .i = -1 } },
-  { MODKEY,	                      XK_Left,   shiftviewclients,    { .i = -1 } },
+	{ MODKEY,                       XK_l,      shiftview,    { .i = +1 } },
+	{ MODKEY,                       XK_Right,  shiftview,    { .i = +1 } },
+  { MODKEY,	                      XK_h,      shiftview,    { .i = -1 } },
+  { MODKEY,	                      XK_Left,   shiftview,    { .i = -1 } },
 
 	{ MODKEY|ShiftMask,             XK_l,	     shifttag,           { .i = +1 } },
 	{ MODKEY|ShiftMask,             XK_Right,	 shifttag,           { .i = +1 } },
