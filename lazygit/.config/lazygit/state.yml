@@ -1,12 +1,23 @@
 lastupdatecheck: 0
 recentrepos:
 - /home/mibdw/dotfiles
-- /home/mibdw/dev/bibliognost
+- /home/mibdw/dev/daisy-fresh
 - /home/mibdw/dev/daisy
-- /home/mibdw/dev/erasmus/vitrine
+- /home/mibdw/dev/nausikaa
 - /home/mibdw/dev/parrot
-- /home/mibdw/dev/bibliognost-extension
 - /home/mibdw/dev/daisy-dev
+- /home/mibdw/dev/bibliognost
+- /home/mibdw/dev/erasmus/vitrine
+- /home/mibdw/dev/bibliognost-extension
 startuppopupversion: 5
-customcommandshistory: []
+lastversion: 0.41.0
+customcommandshistory:
+- q
+- w
 hidecommandlog: false
+ignorewhitespaceindiffview: true
+diffcontextsize: 3
+localbranchsortorder: recency
+remotebranchsortorder: alphabetical
+gitlogorder: topo-order
+gitlogshowgraph: always
