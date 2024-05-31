@@ -29,9 +29,11 @@ vim.opt.scrolloff = 8
 vim.opt.tabstop = 4
 vim.opt.shiftwidth = 4
 vim.opt.wrap = false
+vim.opt.winminwidth = 10
 
 vim.opt.hlsearch = true
-vim.keymap.set("n", "<leader>t", "<cmd>split<bar>term<cr><c-w>J:resize20<cr>:setlocal nonumber norelativenumber<cr>i")
+vim.keymap.set("n", "<leader>w", "<cmd>vert bo term<cr>:setlocal nonumber norelativenumber<cr>:norm G<cr>i")
+vim.keymap.set("t", "<Esc>", "<C-\\><C-n>")
 vim.keymap.set(
 	"n",
 	"<leader>l",
@@ -42,6 +44,14 @@ vim.keymap.set("i", "jk", "<esc>")
 vim.keymap.set("i", "kj", "<esc>")
 vim.keymap.set("v", "<", "<gv")
 vim.keymap.set("v", ">", ">gv")
+
+vim.api.nvim_create_autocmd("WinEnter", {
+	callback = function()
+		if vim.api.nvim_win_get_width(0) < 90 then
+			vim.cmd("vertical resize 90")
+		end
+	end,
+})
 
 vim.api.nvim_create_autocmd("TextYankPost", {
 	desc = "Highlight when yanking (copying) text",
@@ -353,8 +363,8 @@ require("lazy").setup({
 		priority = 1000,
 		init = function()
 			require("catppuccin").setup({
-				-- flavour = "latte",
-				flavour = "mocha",
+				flavour = "latte",
+				-- flavour = "mocha",
 				-- transparent_background = true,
 			})
 
