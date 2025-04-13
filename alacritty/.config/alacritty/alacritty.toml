@@ -1,5 +1,5 @@
 # import = ["~/.config/alacritty/catppuccin-mocha.toml"]
-import = ["~/.config/alacritty/catppuccin-latte.toml"]
+# import = ["~/.config/alacritty/catppuccin-latte.toml"]
 # import = ["~/.config/alacritty/dracula.toml"]
 # import = ["~/.config/alacritty/one-dark.toml"]
 
@@ -31,4 +31,7 @@ x = 0
 y = 2
 
 [window]
-opacity = 1
+opacity = 0.92
+
+[general]
+import = ["~/.config/alacritty/catppuccin-mocha.toml"]

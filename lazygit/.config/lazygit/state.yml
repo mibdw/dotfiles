@@ -1,22 +1,29 @@
 lastupdatecheck: 0
 recentrepos:
-- /home/mibdw/dotfiles
-- /home/mibdw/dev/daisy-fresh
-- /home/mibdw/dev/daisy
-- /home/mibdw/dev/nausikaa
-- /home/mibdw/dev/parrot
-- /home/mibdw/dev/daisy-dev
-- /home/mibdw/dev/bibliognost
-- /home/mibdw/dev/erasmus/vitrine
-- /home/mibdw/dev/bibliognost-extension
+    - /home/mibdw/dotfiles
+    - /home/mibdw/dev/daffy
+    - /home/mibdw/dev/daisy-fresh
+    - /home/mibdw/dev/parrot
+    - /home/mibdw/dev/daisy
+    - /home/mibdw/dev/bibliognost-extension
+    - /home/mibdw/dev/daisy-dev
+    - /home/mibdw/dev/nausikaa
+    - /home/mibdw/dev/bibliognost
+    - /home/mibdw/dev/erasmus/vitrine
 startuppopupversion: 5
-lastversion: 0.41.0
+lastversion: 0.48.0
 customcommandshistory:
-- q
-- w
+    - q
+    - qa
+    - exit
+    - wqa
+    - 'Link colors on Quote PDF exports '
+    - ""
+    - w
 hidecommandlog: false
 ignorewhitespaceindiffview: true
 diffcontextsize: 3
+renamesimilaritythreshold: 50
 localbranchsortorder: recency
 remotebranchsortorder: alphabetical
 gitlogorder: topo-order
