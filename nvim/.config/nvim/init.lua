@@ -282,6 +282,8 @@ require("lazy").setup({
 				json = { "prettierd", "prettier", stop_after_first = true },
 				html = { "prettierd", "prettier", stop_after_first = true },
 				xml = { "prettierd", "prettier", stop_after_first = true },
+				css = { "stylelint" },
+				scss = { "stylelint" },
 			},
 		},
 	},
@@ -330,16 +332,18 @@ require("lazy").setup({
 	},
 
 	{
-		"folke/tokyonight.nvim",
+		"scottmckendry/cyberdream.nvim",
+		lazy = false,
 		priority = 1000,
 		config = function()
-			---@diagnostic disable-next-line: missing-fields
-			require("tokyonight").setup({
+			require("cyberdream").setup({
 				transparent = true,
+				italic_comments = true,
 			})
-			vim.cmd.colorscheme("tokyonight-night")
+			vim.cmd.colorscheme("cyberdream")
 		end,
 	},
+
 	{
 		"folke/todo-comments.nvim",
 		event = "VimEnter",

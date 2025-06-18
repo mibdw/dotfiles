@@ -3,6 +3,7 @@ recentrepos:
     - /home/mibdw/dotfiles
     - /home/mibdw/dev/daffy
     - /home/mibdw/dev/daisy-fresh
+    - /home/mibdw/dev/lawlaw/crawlers
     - /home/mibdw/dev/parrot
     - /home/mibdw/dev/daisy
     - /home/mibdw/dev/bibliognost-extension
@@ -11,7 +12,7 @@ recentrepos:
     - /home/mibdw/dev/bibliognost
     - /home/mibdw/dev/erasmus/vitrine
 startuppopupversion: 5
-lastversion: 0.48.0
+lastversion: 0.52.0
 customcommandshistory:
     - q
     - qa

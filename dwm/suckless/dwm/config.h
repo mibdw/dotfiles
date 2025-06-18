@@ -24,6 +24,7 @@ static const Rule rules[] = {
 	{ "Remmina",  NULL,       NULL,       0,            1,           -1,        460,140,1000,800,     1 },
 	{ "KeePassXC",  NULL,     NULL,       0,            1,           -1,        360,140,1200,800,     1 },
 	{ "Putty",    NULL,       NULL,       1 << 8,       0,           -1,        460,140,1000,800,     1 },
+	{ "com.cisco.secureclient.gui",  NULL,       NULL,       0,            1,           -1,        460,140,1000,800,     1 },
 };
 
 /* layout(s) */
