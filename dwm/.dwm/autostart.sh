@@ -5,4 +5,4 @@ nitrogen --force-setter=xinerama --head=0 --set-zoom-fill --random &
 nitrogen --force-setter=xinerama --head=1 --set-zoom-fill --random &
 unclutter &
 dunst &
-~/suckless/dwmblocks/dwmblocks
+~/suckless/dwmblocks/dwmblocks &
